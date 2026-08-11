@@ -2,7 +2,7 @@
 
 La idea es dividir el proyecto por **módulos completos**, de forma que cada uno pueda trabajar de manera independiente la mayor parte del tiempo, minimizando conflictos con Git y haciendo que ambos aprendamos la parte matemática del ray tracer.
 
-## Parte 1 (Lore)🤓️
+## Parte 1 (LORE)🤓️
 
 ### 1. Matemáticas básicas
 
@@ -65,7 +65,7 @@ Implementar:
 
 ---
 
-## Parte 2 (Lody)🥸️
+## Parte 2 (LODY)🥸️
 
 ### 1. Matemáticas avanzadas
 
