@@ -1,0 +1,162 @@
+# Propuesta de reparto para miniRT
+
+La idea es dividir el proyecto por **módulos completos**, de forma que cada uno pueda trabajar de manera independiente la mayor parte del tiempo, minimizando conflictos con Git y haciendo que ambos aprendamos la parte matemática del ray tracer.
+
+## Parte 1 (Lore)🤓️
+
+### 1. Matemáticas básicas
+
+Implementar toda la librería de vectores.
+
+* `vec3_create` ✅️
+* `vec3_add`    ✅️
+* `vec3_sub`	✅️
+* `vec3_scale`	✅️
+* `vec3_dot`	✅️
+* `vec3_cross`	✅️
+* `vec3_length`	✅️
+* `vec3_normalize`✅️
+
+También:
+
+* `ray`✅️
+
+  * estructura `t_ray`✅️
+  * funciones relacionadas con los rayos✅️
+
+---
+
+### 2. Objetos
+
+#### Esfera
+
+Implementar completamente la esfera:
+
+* estructura
+* cálculo de intersección rayo-esfera
+* cálculo de la normal
+* funciones auxiliares
+
+---
+
+### 3. Render
+
+Implementar el render principal.
+
+* recorrer todos los píxeles de la imagen
+* lanzar un rayo por cada píxel
+* buscar el objeto más cercano
+* pintar el color correspondiente en la imagen
+
+---
+
+### 4. Parser
+
+Implementar:
+
+* `parse_sphere.c`
+* `parse_plane.c`
+* funciones auxiliares del parser (`parse_utils.c`)
+* validaciones relacionadas con:
+
+  * vectores
+  * colores
+  * números
+
+---
+
+## Parte 2 (Lody)🥸️
+
+### 1. Matemáticas avanzadas
+
+#### Cámara
+
+Implementar:
+
+* estructura `t_camera`
+* generación de rayos desde la cámara
+* cálculo del FOV
+* orientación de la cámara
+* rotaciones necesarias
+
+---
+
+### 2. Objetos
+
+Implementar completamente:
+
+#### Plano
+
+* estructura
+* intersección
+* normal
+
+#### Cilindro
+
+* estructura
+* intersección
+* tapas
+* normal
+
+---
+
+### 3. Iluminación
+
+Implementar:
+
+* luz ambiental
+* luz difusa
+* sombras (shadow rays)
+
+---
+
+### 4. Parser
+
+Implementar:
+
+* `parse_camera.c`
+* `parse_light.c`
+* `parse_cylinder.c`
+* validaciones relacionadas con:
+
+  * cámara
+  * luces
+  * objetos
+
+---
+
+# Trabajo conjunto
+
+Hay algunas partes que conviene diseñar entre los dos antes de empezar a programar:
+
+* estructura de carpetas
+* `miniRT.h`
+* nombres de las estructuras (`t_vec3`, `t_ray`, `t_camera`, etc.)
+* nombres y prototipos de las funciones
+* estructura principal `t_scene`
+* normas de estilo y organización del código
+* Makefile
+
+Una vez acordadas estas interfaces, cada uno puede implementar su parte de forma independiente.
+
+---
+
+# Integración final
+
+Cuando cada módulo esté terminado:
+
+* unir el parser con el motor gráfico
+* realizar pruebas con escenas sencillas
+* corregir errores de integración
+* revisar el código del compañero
+* preparar escenas de prueba para la defensa
+
+De esta forma ambos habremos trabajado:
+
+* matemáticas,
+* geometría,
+* parser,
+* y una parte importante del motor del ray tracer,
+
+evitando que uno se quede únicamente con el parser o que toda la parte matemática recaiga sobre una sola persona.
+
