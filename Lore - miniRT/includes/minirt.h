@@ -5,7 +5,7 @@
 
 // Allowed Libraries
 #include <math.h>
-#include <aio.h>
+#include <stdint.h>
 
 //Objects
 typedef struct s_ambient_l
