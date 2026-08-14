@@ -11,18 +11,14 @@ typedef struct s_sphere
 } t_sphere;
 */
 
-t_sphere (t_vec3 center, double radius)
+t_sphere ( t_cord center, double radius)
 {
-    t_sphere sphere;
-    sphere.center = center;
-    sphere.radius = radius;
-    return (sphere);
-    
+	
 }
 
 sphere_hit()
 {
-    
+	
 }
 
 /*La normal es un vector que indica hacia dónde está orientada
@@ -31,5 +27,5 @@ compara con la dirección de la luz para calcular cuánta
 iluminación recibe ese punto.*/
 sphere_normal()
 {
-    
+	
 }
