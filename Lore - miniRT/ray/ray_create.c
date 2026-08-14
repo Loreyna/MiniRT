@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
-#include "s_ray.h"
+#include "minirt.h"
 
 t_ray ray_create(t_vec3 origin, t_vec3 direction)
 {

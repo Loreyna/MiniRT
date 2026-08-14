@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
-#include "s_ray.h"
+#include "minirt.h"
 
 t_vec3 ray_at (t_ray ray, double t)
 {
