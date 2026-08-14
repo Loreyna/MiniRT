@@ -2,6 +2,15 @@
 
 #include "minirt.h"
 
+/*
+typedef struct s_sphere
+{
+	double	cordinates[3];
+	double	diameter;
+	uint8_t	rgb[3];
+} t_sphere;
+*/
+
 t_sphere (t_vec3 center, double radius)
 {
     t_sphere sphere;

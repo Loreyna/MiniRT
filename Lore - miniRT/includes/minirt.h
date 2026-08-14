@@ -78,10 +78,4 @@ typedef struct s_ray
 t_vec3 ray_at (t_ray ray, double t);
 t_ray ray_create(t_vec3 origin, t_vec3 direction);
 
-//Esphere
-typedef struct s_sphere
-{
-	t_vec3 center;
-	double radius;
-} t_sphere;
 #endif
