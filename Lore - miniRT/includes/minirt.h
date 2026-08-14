@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdint.h>
 
+
 //Objects
 typedef struct s_ambient_l
 {
@@ -48,6 +49,24 @@ typedef struct s_cylinder
 	t_vec3	axis_v;
 	uint8_t	rgb[3];
 } t_cylinder;
+
+//Scene
+typedef struct s_scene
+{
+	int	al_count;
+	int	cam_count;
+	int	l_count;
+	int	s_count;
+	int	p_count;
+	int	cyl_count;
+
+	t_ambient_l	*ambient_l;
+	t_camera	*cam;
+	t_light		*light;
+	t_sphere	*sphere;
+	t_plane		*plane;
+	t_cylinder	*cylinder;
+} t_scene;
 
 //Cordenades
 typedef struct s_cord
