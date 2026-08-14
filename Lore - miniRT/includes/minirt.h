@@ -14,7 +14,7 @@ typedef struct s_ambient_l
 
 typedef struct s_camera
 {
-	t_cords	cordinates;
+	t_cord	cordinates;
 	t_vec3	orientation;
 	uint8_t	fov; 
 } t_camera;
