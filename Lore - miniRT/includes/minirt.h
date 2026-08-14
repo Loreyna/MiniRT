@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/11 18:08:04 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/14 18:01:42 by viaremko         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #ifndef VEC3_H
 # define VEC3_H
@@ -62,10 +52,10 @@ typedef struct s_cylinder
 
 //Vectors
 typedef struct s_vec3
-{//double nº con decimales con mas precisión que float
-    double x;
-    double y;
-    double z;
+{//double nº con decimales con más precisión que float
+	double x;
+	double y;
+	double z;
 } t_vec3;
 
 t_vec3	vec3_create(double x, double y, double z);
@@ -86,4 +76,11 @@ typedef struct s_ray
 
 t_vec3 ray_at (t_ray ray, double t);
 t_ray ray_create(t_vec3 origin, t_vec3 direction);
+
+//Esphere
+typedef struct s_sphere
+{
+	t_vec3 center;
+	double radius;
+} t_sphere;
 #endif
