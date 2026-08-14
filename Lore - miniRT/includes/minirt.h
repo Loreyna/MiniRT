@@ -1,5 +1,3 @@
-
-
 #ifndef VEC3_H
 # define VEC3_H
 
@@ -11,45 +9,53 @@
 typedef struct s_ambient_l
 {
 	uint8_t	rgb[3];
-	float	light_ratio;
+	double	light_ratio;
 } t_ambient_l;
 
 typedef struct s_camera
 {
-	float	cordinates[3];
+	t_cords	cordinates;
 	t_vec3	orientation;
 	uint8_t	fov; 
 } t_camera;
 
 typedef struct s_light
 {
-	float	cordinates[3];
-	float	brightness;
+	t_cord	cordinates;
+	double	brightness;
 	uint8_t	rgb[3];
 } t_light;
 
 typedef struct s_sphere
 {
-	float	cordinates[3];
-	float	diameter;
+	t_cord	center;
+	double	diameter;
 	uint8_t	rgb[3];
 } t_sphere;
 
 typedef struct s_plane
 {
-	float	cordinates[3];
+	t_cord	center;
 	t_vec3	normal_v;
 	uint8_t	rgb[3];
 } t_plane;
 
 typedef struct s_cylinder
 {
-	float	cordinates[3];
-	float	diameter;
-	float	height;
+	t_cord	center;
+	double	diameter;
+	double	height;
 	t_vec3	axis_v;
 	uint8_t	rgb[3];
 } t_cylinder;
+
+//Cordenades
+typedef struct s_cord
+{
+	double x;
+	double y;
+	double z;
+} t_cord;
 
 //Vectors
 typedef struct s_vec3
