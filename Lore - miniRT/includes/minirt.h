@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 18:08:04 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/11 18:14:07 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/14 18:01:42 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,50 @@
 
 // Allowed Libraries
 #include <math.h>
+
+//Objects
+typedef struct s_ambient_l
+{
+	uint8_t	rgb[3];
+	float	light_ratio;
+} t_ambient_l;
+
+typedef struct s_camera
+{
+	float	cordinates[3];
+	t_vec3	orientation;
+	uint8_t	fov; 
+} t_camera;
+
+typedef struct s_light
+{
+	float	cordinates[3];
+	float	brightness;
+	uint8_t	rgb[3];
+} t_light;
+
+typedef struct s_sphere
+{
+	float	cordinates[3];
+	float	diameter;
+	uint8_t	rgb[3];
+} t_sphere;
+
+typedef struct s_plane
+{
+	float	cordinates[3];
+	t_vec3	normal_v;
+	uint8_t	rgb[3];
+} t_plane;
+
+typedef struct s_cylinder
+{
+	float	cordinates[3];
+	float	diameter;
+	float	height;
+	t_vec3	axis_v;
+	uint8_t	rgb[3];
+} t_cylinder;
 
 //Vectors
 typedef struct s_vec3
