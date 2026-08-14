@@ -53,9 +53,6 @@ typedef struct s_cylinder
 //Scene
 typedef struct s_scene
 {
-	int	al_count;
-	int	cam_count;
-	int	l_count;
 	int	s_count;
 	int	p_count;
 	int	cyl_count;
