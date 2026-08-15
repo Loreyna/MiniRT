@@ -32,7 +32,11 @@ typedef struct s_ray
 */
 sphere_hit(t_ray ray, t_sphere sphere)
 {
-    
+	double t;
+	double radius;
+
+	radius = sphere.diameter / 2;
+
 }
 
 /*La normal es un vector que indica hacia dónde está orientada
@@ -41,5 +45,5 @@ compara con la dirección de la luz para calcular cuánta
 iluminación recibe ese punto.*/
 sphere_normal()
 {
-    
+	
 }

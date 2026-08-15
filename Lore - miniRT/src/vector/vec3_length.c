@@ -14,8 +14,8 @@
 
 double	vec3_length(t_vec3 v)
 {
-	double	r;
+	double	length;
 
-	r = sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
-	return (r);
+	length = sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
+	return (length);
 }
