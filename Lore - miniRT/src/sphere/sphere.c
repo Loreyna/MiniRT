@@ -1,6 +1,4 @@
-
-
-#include "minirt.h"
+#include "../../minirt.h"
 
 /*
 typedef struct s_sphere

@@ -6,11 +6,11 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 13:29:37 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/07/31 13:37:33 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/15 15:47:00 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../../minirt.h"
 
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 {

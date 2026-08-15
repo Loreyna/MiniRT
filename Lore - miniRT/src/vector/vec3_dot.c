@@ -6,11 +6,11 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 13:18:57 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/14 18:30:51 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/15 15:47:11 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../../minirt.h"
 
 double	vec3_dot(t_vec3 a, t_vec3 b)
 {

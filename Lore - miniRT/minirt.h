@@ -49,7 +49,7 @@ typedef struct s_hit
 	double t;	     //distancia hasta el choque?
 	t_cord point;	 //Donde ha sido el impacto?
 	t_vec3 normal;   //Que direccion tiene la superficie en ese punto?
-} t_hit
+} t_hit;
 
 
 //Objects
