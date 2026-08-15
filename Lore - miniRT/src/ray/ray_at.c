@@ -1,5 +1,4 @@
-
-#include "minirt.h"
+#include "../../minirt.h"
 
 //obtener un punto cualquiera del rayo.
 
