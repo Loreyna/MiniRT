@@ -14,7 +14,8 @@
 
 t_vec3	vec3_scale(t_vec3 v, double k)
 {
-	t_vec3 vec3;
+	t_vec3	vec3;
+
 	vec3.x = v.x * k;
 	vec3.y = v.y * k;
 	vec3.z = v.z * k;

@@ -14,7 +14,8 @@
 
 t_vec3	vec3_create(double x, double y, double z)
 {
-	t_vec3 vec3;
+	t_vec3	vec3;
+
 	vec3.x = x;
 	vec3.y = y;
 	vec3.z = z;

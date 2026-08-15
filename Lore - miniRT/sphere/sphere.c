@@ -23,7 +23,16 @@ t_sphere sphere_create (t_cord center, double diameter, uint8_t rgb[3])
 	return (sphere);
 }
 
-sphere_hit()
+/*
+"Dado un rayo y una esfera, ¿el rayo atraviesa la esfera?
+Si la atraviesa, ¿en qué punto ocurre el impacto?"
+typedef struct s_ray
+{
+	t_vec3	origin;
+	t_vec3	direction;
+}	t_ray;
+*/
+sphere_hit(t_ray ray, t_sphere sphere)
 {
     
 }

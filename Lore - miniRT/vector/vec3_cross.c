@@ -14,13 +14,10 @@
 
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 {
-	t_vec3 vec3;
+	t_vec3	vec3;
+
 	vec3.x = (a.y * b.z) - (a.z * b.y);
 	vec3.y = (a.z * b.x) - (a.x * b.z);
 	vec3.z = (a.x * b.y) - (a.y * b.x);
 	return (vec3);
 }
-/*
-Recibe dos vectores y devuelve otro vector 
-perpendicular a los dos.
-*/

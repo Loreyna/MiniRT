@@ -14,8 +14,9 @@
 
 t_vec3	vec3_sub(t_vec3 a, t_vec3 b)
 {
-	t_vec3 vec3;
-	vec3.x = a.x - b.x; 
+	t_vec3	vec3;
+
+	vec3.x = a.x - b.x;
 	vec3.y = a.y - b.y;
 	vec3.z = a.z - b.z;
 	return (vec3);

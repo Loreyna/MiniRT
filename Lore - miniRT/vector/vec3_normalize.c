@@ -14,8 +14,10 @@
 
 t_vec3	vec3_normalize(t_vec3 v)
 {
-	t_vec3 vec3;
-	double n = vec3_length(v);
+	t_vec3	vec3;
+	double	n;
+
+	n = vec3_length(v);
 	vec3.x = v.x / n;
 	vec3.y = v.y / n;
 	vec3.z = v.z / n;
