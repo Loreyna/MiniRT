@@ -6,7 +6,7 @@
 /*   By: jgalizio <jgalizio@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 13:06:30 by jgalizio          #+#    #+#             */
-/*   Updated: 2025/06/06 15:42:46 by jgalizio         ###   ########.fr       */
+/*   Updated: 2026/08/15 20:43:16 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 
 void	ft_free(void **ptr);
-void	ft_free_matrix(void **mtx);
+void	ft_free_matrix(void ***mtx);
 
 #endif

@@ -12,13 +12,19 @@
 
 #include "../libft.h"
 
-void	ft_free_matrix(void **mtx)
+void ft_free_matrix(void ***mtx)
 {
-	size_t	i;
+    size_t i;
 
-	i = -1;
-	while (mtx[++i])
-		ft_free(&mtx[i]);
-	free(mtx);
-	mtx = NULL;
+    if (!mtx || !*mtx)
+        return;
+
+    i = 0;
+    while ((*mtx)[i])
+    {
+        ft_free(&(*mtx)[i]);
+        i++;
+    }
+    free(*mtx);
+    *mtx = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: jgalizio <jgalizio@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 16:41:48 by jgalizio          #+#    #+#             */
-/*   Updated: 2024/11/18 16:35:46 by jgalizio         ###   ########.fr       */
+/*   Updated: 2026/08/15 20:44:06 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	if (!set_substrs(s, str_splitted, c, how_many_tokens))
 	{
-		ft_free_matrix((void **)str_splitted);
+		ft_free_matrix((void ***)&str_splitted);
 		return (NULL);
 	}
 	return (str_splitted);

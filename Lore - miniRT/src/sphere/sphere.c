@@ -27,7 +27,7 @@ typedef struct s_ray
 	t_vec3	direction;
 }	t_ray;
 */
-sphere_hit(t_ray ray, t_sphere sphere) //((origen + direccion ∗ t) − centro)² = R²
+void	sphere_hit(t_ray ray, t_sphere sphere) //((origen + direccion ∗ t) − centro)² = R²
 {
 	double radius;
 	t_vec3 oc; // oc = origen − centro --> (oc + direccion * t)² = R²
@@ -37,7 +37,7 @@ sphere_hit(t_ray ray, t_sphere sphere) //((origen + direccion ∗ t) − centro)
 	double discriminant;
 	//(a+b)² = a²+2ab+b²
 	radius = sphere.diameter / 2.0;
-	oc = vec3_sub(ray.origin, sphere.center);
+//	oc = vec3_sub(ray.origin, sphere.center);
 	a = vec3_dot(ray.direction, ray.direction);
 	b = 2.0 * vec3_dot(oc, ray.direction);
 	c = vec3_dot(oc, oc) - radius * radius;
@@ -58,6 +58,6 @@ sphere_hit(t_ray ray, t_sphere sphere) //((origen + direccion ∗ t) − centro)
 la superficie en el punto donde el rayo ha impactado. Después se
 compara con la dirección de la luz para calcular cuánta
 iluminación recibe ese punto.*/
-sphere_normal()
-{
-}
+//sphere_normal()
+//{
+//}
