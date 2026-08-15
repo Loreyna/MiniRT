@@ -27,13 +27,30 @@ typedef struct s_ray
 	t_vec3	direction;
 }	t_ray;
 */
-sphere_hit(t_ray ray, t_sphere sphere) //at2+bt+c=0
+sphere_hit(t_ray ray, t_sphere sphere) //((origen + direccion ∗ t) − centro)² = R²
 {
 	double radius;
-	t_vec3 oc; // oc=origen−centro
-
-	radius = sphere.diameter / 2;
-
+	t_vec3 oc; // oc = origen − centro --> (oc + direccion * t)² = R²
+	double a;
+	double b;
+	double c;
+	double discriminant;
+	//(a+b)² = a²+2ab+b²
+	radius = sphere.diameter / 2.0;
+	oc = vec3_sub(ray.origin, sphere.center);
+	a = vec3_dot(ray.direction, ray.direction);
+	b = 2.0 * vec3_dot(oc, ray.direction);
+	c = vec3_dot(oc, oc) - radius * radius;
+	discriminant = b * b - 4.0 * a * c;
+	if(discriminant < 0)
+	{
+		//no hay choque
+	}
+	else
+	{
+		//si lo hay
+		//calcular t
+	}
 
 }
 
