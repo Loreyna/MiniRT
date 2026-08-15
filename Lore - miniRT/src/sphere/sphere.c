@@ -25,13 +25,15 @@ typedef struct s_ray
 {
 	t_vec3	origin;
 	t_vec3	direction;
-}	t_ray;*/
-sphere_hit(t_ray ray, t_sphere sphere)
+}	t_ray;
+*/
+sphere_hit(t_ray ray, t_sphere sphere) //at2+bt+c=0
 {
-	double t;
 	double radius;
+	t_vec3 oc; // oc=origen−centro
 
 	radius = sphere.diameter / 2;
+
 
 }
 
