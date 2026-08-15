@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	t_vec3 vector1 = vec3_create(1,1,1); 
 	t_vec3 vector2 = vec3_create(2,2,2); 
 	t_vec3 result = vec3_add(vector1, vector2);
-	ft_printf("Vector data: x:$lf y:$lf z:$lf\n",result.x, result.y, result.z);
+	ft_printf("Vector data: x:%f y:%f z:%f\n",result.x, result.y, result.z);
 	ft_printf("Success!\n");
 	return(0);
 }

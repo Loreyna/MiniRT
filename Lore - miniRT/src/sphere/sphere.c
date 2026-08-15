@@ -1,13 +1,11 @@
 #include "../../minirt.h"
 
-/*
-typedef struct s_sphere
+/*typedef struct s_sphere
 {
 	t_cord	center;
 	double	diameter;
 	uint8_t	rgb[3];
-} t_sphere;
-*/
+} t_sphere;*/
 
 t_sphere sphere_create (t_cord center, double diameter, uint8_t rgb[3])
 {
@@ -21,15 +19,13 @@ t_sphere sphere_create (t_cord center, double diameter, uint8_t rgb[3])
 	return (sphere);
 }
 
-/*
-"Dado un rayo y una esfera, ¿el rayo atraviesa la esfera?
+/*"Dado un rayo y una esfera, ¿el rayo atraviesa la esfera?
 Si la atraviesa, ¿en qué punto ocurre el impacto?"
 typedef struct s_ray
 {
 	t_vec3	origin;
 	t_vec3	direction;
-}	t_ray;
-*/
+}	t_ray;*/
 sphere_hit(t_ray ray, t_sphere sphere)
 {
 	double t;
@@ -45,5 +41,4 @@ compara con la dirección de la luz para calcular cuánta
 iluminación recibe ese punto.*/
 sphere_normal()
 {
-	
 }
