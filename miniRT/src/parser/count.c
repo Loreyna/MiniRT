@@ -6,7 +6,7 @@
 /*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/16 16:53:41 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/16 18:50:09 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../minirt.h"
@@ -19,18 +19,14 @@ static bool	check_unique(bool *found)
 	return (true);
 }
 
-static bool	check_objects(char **data)
+static bool	check_objects(t_scene *scene, char **data)
 {
-	static bool	has_camera;
-	static bool	has_ambient;
-	static bool	has_light;
-	
 	if (ft_strcmp("A", data[0]) == 0)
-		return (check_unique(&has_ambient));
+		return (check_unique(&scene->has_ambient));
 	else if (ft_strcmp("C", data[0]) == 0)
-		return (check_unique(&has_camera));
+		return (check_unique(&scene->has_camera));
 	else if (ft_strcmp("L", data[0]) == 0)
-		return (check_unique(&has_light));
+		return (check_unique(&scene->has_light));
 	return (false);
 }
 
@@ -60,7 +56,7 @@ static bool	process_data(t_scene *scene, char **data)
 		return (false);
 	if (ft_strcmp("\n", data[0]) == 0)
 		return (true);
-	if (!check_objects(data) && !check_figures(scene, data))
+	if (!check_objects(scene, data) && !check_figures(scene, data))
 		return (false);
 	return (true);
 }

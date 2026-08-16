@@ -6,7 +6,7 @@
 /*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/16 16:48:36 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/16 18:43:24 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ typedef struct s_cylinder
 // Scene
 typedef struct s_scene
 {
+	bool			has_ambient;
+	bool			has_camera;
+	bool			has_light;
 	int			s_count;
 	int			p_count;
 	int			cyl_count;
@@ -118,12 +121,17 @@ typedef struct s_scene
 	t_ambient_l	*ambient_l;
 	t_camera	*cam;
 	t_light		*light;
-	t_sphere	*sphere;
-	t_plane		*plane;
-	t_cylinder	*cylinder;
+	t_sphere	*spheres;
+	t_plane		*planes;
+	t_cylinder	*cylinders;
 }				t_scene;
 
+//Memory
+void	init_scene(t_scene *scene);
+void	free_scene(t_scene *scene);
+void	allocate_scene(t_scene *scene);
+
 // Parser
-void			args_check(int ac, char **av);
+void			check_args(int ac, char **av);
 void			count_objects(t_scene *scene, char *filename);
 #endif
