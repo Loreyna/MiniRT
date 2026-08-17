@@ -50,7 +50,7 @@ static bool	check_figures(t_scene *scene, char **data)
 	return (false);
 }
 
-static bool	process_data(t_scene *scene, char **data)
+static bool	count_data(t_scene *scene, char **data)
 {
 	if (!data || !data[0])
 		return (false);
@@ -74,7 +74,7 @@ void	count_objects(t_scene *scene, char *filename)
 	while (line != NULL)
 	{
 		data = ft_split(line, ' ');
-		if (!process_data(scene, data))
+		if (!count_data(scene, data))
 		{
 			ft_free((void **)&line);
 			ft_free_matrix((void ***)&data);

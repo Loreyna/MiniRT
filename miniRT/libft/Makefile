@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgalizio <jgalizio@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 14:34:08 by jgalizio          #+#    #+#              #
-#    Updated: 2026/06/25 10:12:02 by jgalizio         ###   ########.fr        #
+#    Updated: 2026/08/17 17:56:23 by lrey-mol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ MODULES			+= $(addprefix $(DIR_CHAR)/,		\
 					ft_isalpha.c				\
 					ft_isascii.c				\
 					ft_isdigit.c				\
+					ft_isdouble.c				\
 					ft_isprint.c				\
 					ft_isspace.c				\
 					ft_tolower.c				\
@@ -82,6 +83,7 @@ MODULES			+= $(addprefix $(DIR_NUMS)/,	\
 					ft_atoi.c					\
 					ft_atoi_hex.c				\
 					ft_atol.c					\
+					ft_atof.c					\
 					ft_numlen.c					\
 					)
 

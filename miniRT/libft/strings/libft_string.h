@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_string.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgalizio <jgalizio@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 13:09:12 by jgalizio          #+#    #+#             */
-/*   Updated: 2025/07/02 17:11:22 by jgalizio         ###   ########.fr       */
+/*   Updated: 2026/08/17 18:45:12 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft_incs.h"
 
 bool	ft_is_str_numeric(char *s);
+bool	ft_is_str_double(char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strchr(const char *s, int c);

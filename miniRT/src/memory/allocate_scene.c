@@ -19,7 +19,7 @@ void	init_scene(t_scene *scene)
 
 void	free_scene(t_scene *scene)
 {
-	ft_free((void **)&scene->ambient_l);
+	ft_free((void **)&scene->ambient);
 	ft_free((void **)&scene->cam);
 	ft_free((void **)&scene->light);
 	ft_free((void **)&scene->spheres);
@@ -37,7 +37,7 @@ static void	check_alloc(void *ptr, bool condition, t_scene *scene)
 
 static void	check_memory(t_scene *scene)
 {
-	check_alloc(scene->ambient_l, scene->has_ambient, scene);
+	check_alloc(scene->ambient, scene->has_ambient, scene);
 	check_alloc(scene->cam, scene->has_camera, scene);
 	check_alloc(scene->light, scene->has_light, scene);
 	check_alloc(scene->spheres, scene->s_count, scene);
@@ -47,7 +47,7 @@ static void	check_memory(t_scene *scene)
 
 void	allocate_scene(t_scene *scene)
 {
-	scene->ambient_l = ft_calloc(scene->has_ambient, sizeof(t_ambient_l));
+	scene->ambient = ft_calloc(scene->has_ambient, sizeof(t_ambient));
 	scene->cam = ft_calloc(scene->has_camera, sizeof(t_camera));
 	scene->light = ft_calloc(scene->has_light, sizeof(t_light));
 	scene->spheres = ft_calloc(scene->s_count, sizeof(t_sphere));

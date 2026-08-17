@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/16 18:43:24 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/17 18:43:23 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ typedef struct s_hit
 }				t_hit;
 
 // Objects
-typedef struct s_ambient_l
+typedef struct s_ambient
 {
-	uint8_t		rgb[3];
 	double		light_ratio;
-}				t_ambient_l;
+	uint8_t		rgb[3];
+}				t_ambient;
 
 typedef struct s_camera
 {
@@ -118,7 +118,7 @@ typedef struct s_scene
 	int			p_count;
 	int			cyl_count;
 
-	t_ambient_l	*ambient_l;
+	t_ambient	*ambient;
 	t_camera	*cam;
 	t_light		*light;
 	t_sphere	*spheres;
@@ -134,4 +134,7 @@ void	allocate_scene(t_scene *scene);
 // Parser
 void			check_args(int ac, char **av);
 void			count_objects(t_scene *scene, char *filename);
+void			parse_objects(t_scene *scene, char *filename);
+bool			parse_ambient(t_scene *scene, char **data);
+bool			parse_camera(t_scene *scene, char **data);
 #endif
