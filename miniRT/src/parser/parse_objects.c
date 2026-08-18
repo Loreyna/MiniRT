@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_objects.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
+/*   Updated: 2026/08/18 15:16:40 by viaremko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../../minirt.h"
 
 /* parsing process:
@@ -8,17 +19,17 @@
 
 bool	parse_init(int argc, char **data)
 {
-	if(ft_count_arrays(data) != argc)
+	if (ft_count_arrays(data) != argc)
 		return (false);
-	remove_nl(data[argc-1]);
+	remove_nl(data[argc - 1]);
 	return (true);
 }
 
-static bool parse_data(t_scene *scene, char **data)
+static bool	parse_data(t_scene *scene, char **data)
 {
 	if (ft_strcmp(data[0], "A") == 0)
 		parse_ambient(scene, data);
-	else if(ft_strcmp(data[0], "C") == 0)
+	else if (ft_strcmp(data[0], "C") == 0)
 		parse_camera(scene, data);
 	return (true);
 }

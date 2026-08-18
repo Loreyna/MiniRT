@@ -6,7 +6,7 @@
 /*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/16 19:06:47 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/18 15:19:51 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	free_scene(t_scene *scene)
 	ft_free((void **)&scene->planes);
 	ft_free((void **)&scene->cylinders);
 }
+
 static void	check_alloc(void *ptr, bool condition, t_scene *scene)
 {
 	if (condition && !ptr)
