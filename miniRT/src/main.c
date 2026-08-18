@@ -31,6 +31,19 @@ static void	print_scene(t_scene *scene)
 			scene->cam[0].orientation.z);
 		printf("  Camera FOV: %u\n", scene->cam[0].fov);
 	}
+	if(scene->has_light == 1)
+	{
+		printf("  Light coordinates: %.2f, %.2f, %.2f\n",
+			scene->light->cordinates.x,
+			scene->light->cordinates.y,
+			scene->light->cordinates.z);
+		printf("  Light brightness: %.2f\n",
+			scene->light->brightness);
+		printf("  Light RGB: %d, %d, %d\n",
+			scene->light->rgb[0],
+			scene->light->rgb[1],
+			scene->light->rgb[2]);
+	}
 }
 
 int main(int ac, char **av)

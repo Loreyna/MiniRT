@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/16 18:50:09 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/18 15:43:54 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../minirt.h"
 
 static bool	check_unique(bool *found)

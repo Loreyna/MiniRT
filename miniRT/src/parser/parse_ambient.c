@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ambient.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 15:19:02 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/18 15:49:50 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../minirt.h"
 
 static bool	parse_light_ratio(t_scene *scene, char **data)
@@ -24,8 +25,8 @@ static bool	parse_rgb(t_scene *scene, char **data)
 	char	**rgb;
 
 	rgb = ft_split(data[2], ',');
-	if (!ft_is_str_double(rgb[0]) || !ft_is_str_double(rgb[1])
-		|| !ft_is_str_double(rgb[2]))
+	if (!ft_is_str_numeric(rgb[0]) || !ft_is_str_numeric(rgb[1])
+		|| !ft_is_str_numeric(rgb[2]) || !rgb_check(rgb))
 	{
 		ft_free_matrix((void ***)&rgb);
 		return (false);

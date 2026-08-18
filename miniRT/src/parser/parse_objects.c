@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_objects.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 15:16:40 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/18 16:10:39 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../minirt.h"
 
+#include "../../minirt.h"
 /* parsing process:
 	check right args count for an object;
 	remove '\n' char from the last argument;
@@ -31,17 +31,24 @@ static bool	parse_data(t_scene *scene, char **data)
 		parse_ambient(scene, data);
 	else if (ft_strcmp(data[0], "C") == 0)
 		parse_camera(scene, data);
+	else if (ft_strcmp(data[0], "L") == 0)
+		parse_light(scene, data);
 	return (true);
 }
 
-bool	check_rgb(int rgb[3])
+bool	rgb_check(char **rgb)
 {
-	if (rgb[0] < 0 || rgb[0] > 255)
-		return (false);
-	if (rgb[1] < 0 || rgb[1] > 255)
-		return (false);
-	if (rgb[2] < 0 || rgb[2] > 255)
-		return (false);
+	int	value;
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		value = ft_atoi(rgb[i]);
+		if (value < 0 || value > 255)
+			return (false);
+		i++;
+	}
 	return (true);
 }
 
@@ -68,4 +75,5 @@ void	parse_objects(t_scene *scene, char *filename)
 		ft_free_matrix((void ***)&data);
 		line = get_next_line(fd);
 	}
+
 }
