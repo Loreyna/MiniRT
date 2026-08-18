@@ -79,10 +79,12 @@ void	count_objects(t_scene *scene, char *filename)
 		{
 			ft_free((void **)&line);
 			ft_free_matrix((void ***)&data);
+			close(fd);
 			error_exit("Error\n", "bad data.", 3);
 		}
 		ft_free((void **)&line);
 		ft_free_matrix((void ***)&data);
 		line = get_next_line(fd);
 	}
+	close(fd);
 }
