@@ -12,7 +12,7 @@
 
 #include "../libft.h"
 
-int ft_isdouble(char c)
+int	ft_isdouble(char c)
 {
-	return ((c >= 48 && c <= 57) || c =='.');
+	return ((c >= 48 && c <= 57) || c == '.');
 }

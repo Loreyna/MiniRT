@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 #include "../libft.h"
 
-void remove_nl(char *str)
+void	remove_nl(char *str)
 {
 	int	len;
-	
-	if(!str)
-		return;
+
+	if (!str)
+		return ;
 	len = ft_strlen(str);
- 	if (len > 0 && str[len - 1] == '\n')
-        	str[len - 1] = '\0';
+	if (len > 0 && str[len - 1] == '\n')
+		str[len - 1] = '\0';
 }
