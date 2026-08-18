@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 16:10:39 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 16:31:39 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,4 @@ void	parse_objects(t_scene *scene, char *filename)
 		ft_free_matrix((void ***)&data);
 		line = get_next_line(fd);
 	}
-
 }
