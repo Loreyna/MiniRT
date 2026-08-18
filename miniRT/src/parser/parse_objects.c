@@ -1,5 +1,19 @@
 #include "../../minirt.h"
 
+/* parsing process:
+	check right args count for an object;
+	remove '\n' char from the last argument;
+	check if each argument is aceptable;
+	store the data inside object's struct;*/
+
+bool	parse_init(int argc, char **data)
+{
+	if(ft_count_arrays(data) != argc)
+		return (false);
+	remove_nl(data[argc-1]);
+	return (true);
+}
+
 static bool parse_data(t_scene *scene, char **data)
 {
 	if (ft_strcmp(data[0], "A") == 0)

@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/17 18:43:23 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 14:42:44 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void	free_scene(t_scene *scene);
 void	allocate_scene(t_scene *scene);
 
 // Parser
+bool			parse_init(int argc, char **data);
 void			check_args(int ac, char **av);
 void			count_objects(t_scene *scene, char *filename);
 void			parse_objects(t_scene *scene, char *filename);

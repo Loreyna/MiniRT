@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/17 18:00:20 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 13:16:11 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@ bool	ft_is_str_numeric(char *s)
 {
 	int	i;
 
+	if (!s || !s[0])
+		return (false);
 	i = 0;
-	if (s[0] == '+' || s[0] == '-')
-		i = 1;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	if (!s[i])
+		return (false);
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
@@ -30,20 +34,19 @@ bool	ft_is_str_numeric(char *s)
 bool	ft_is_str_double(char *s)
 {
 	int	i;
-	int control = 0;
 
+	if (!s || !s[0])
+		return (false);
 	i = 0;
-	if (s[0] == '+' || s[0] == '-')
-		i = 1;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	if (!s[i])
+		return (false);
 	while (s[i])
 	{
-		if(s[i] == '.')
-			control++;
 		if (!ft_isdouble(s[i]))
 			return (false);
 		i++;
 	}
-	if (control > 1)
-		return (false);
 	return (true);
 }

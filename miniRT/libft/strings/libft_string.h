@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 13:09:12 by jgalizio          #+#    #+#             */
-/*   Updated: 2026/08/17 18:45:12 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 14:40:21 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft_incs.h"
 
+void	remove_nl(char *str);
 bool	ft_is_str_numeric(char *s);
 bool	ft_is_str_double(char *s);
 char	**ft_split(char const *s, char c);

@@ -47,7 +47,8 @@ SRCS		+= $(addprefix $(BASE_DIR_PARSER)/,				\
 					count.c					\
 					check_args.c				\
 					parse_objects.c				\
-					parse_objects2.c				\
+					parse_ambient.c				\
+					parse_camera.c				\
 					)
 
 BASE_DIR_MEMORY = $(SRC_DIR)/memory

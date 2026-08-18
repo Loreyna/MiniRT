@@ -6,7 +6,7 @@
 #    By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 14:34:08 by jgalizio          #+#    #+#              #
-#    Updated: 2026/08/17 17:56:23 by lrey-mol         ###   ########.fr        #
+#    Updated: 2026/08/18 14:41:09 by viaremko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ MODULES			+= $(addprefix $(DIR_NUMS)/,	\
 					)
 
 MODULES			+= $(addprefix $(DIR_STRINGS)/,	\
+					remove_nl.c				\
 					ft_is_str_numeric.c			\
 					ft_itoa.c					\
 					ft_split.c					\
