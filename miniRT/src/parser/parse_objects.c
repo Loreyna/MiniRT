@@ -34,6 +34,17 @@ static bool	parse_data(t_scene *scene, char **data)
 	return (true);
 }
 
+bool	check_rgb(int rgb[3])
+{
+	if (rgb[0] < 0 || rgb[0] > 255)
+		return (false);
+	if (rgb[1] < 0 || rgb[1] > 255)
+		return (false);
+	if (rgb[2] < 0 || rgb[2] > 255)
+		return (false);
+	return (true);
+}
+
 void	parse_objects(t_scene *scene, char *filename)
 {
 	int		fd;

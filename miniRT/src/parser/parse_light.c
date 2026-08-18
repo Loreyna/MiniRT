@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 14:59:43 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/18 15:16:28 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 15:32:18 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static	bool parse_cords(t_scene *scene, char **data)
 	return (true);
 }
 
+
+
 bool    parse_light(t_scene *scene, char **data)
 {
     char    **rgb;
@@ -40,12 +42,13 @@ bool    parse_light(t_scene *scene, char **data)
 		return (false);
 	if(!parse_cords(scene, data))
 		return (false);
+	
+	scene->light->brightness = ft_atof(data[1]);
 
     if(!ft_is_str_double(data[2]))
 		return (false);
-    scene->light->brightness = ft_atof(data[1]);
-
-    rgb = ft_split(data[2], ',');
+    
+	rgb = ft_split(data[2], ',');
 	if(!ft_is_str_numeric(rgb[0]) || !ft_is_str_double(rgb[1]) ||
 			!ft_is_str_double(rgb[2]))
 			{
