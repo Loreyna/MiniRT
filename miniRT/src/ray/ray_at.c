@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_at.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/18 18:37:21 by lrey-mol          #+#    #+#             */
+/*   Updated: 2026/08/18 18:37:51 by lrey-mol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../minirt.h"
 
-//obtener un punto cualquiera del rayo.P(t) = origin + direction * t
-
-t_vec3	ray_at (t_ray ray, double t)
+t_vec3	ray_at(t_ray ray, double t)
 {
 	t_vec3	displacement;
 	t_vec3	position;

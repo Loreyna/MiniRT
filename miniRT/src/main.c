@@ -40,16 +40,62 @@ static void	print_scene(t_scene *scene)
 		printf("  Light brightness: %.2f\n",
 			scene->light->brightness);
 		printf("  Light RGB: %d, %d, %d\n",
-			scene->light->rgb[0],
-			scene->light->rgb[1],
-			scene->light->rgb[2]);
+    		scene->light->rgb[0],
+    		scene->light->rgb[1],
+    		scene->light->rgb[2]);
+	}
+	if (scene->s_count >= 1)
+	{
+		int i;
+
+		i = 0;
+		while (i < scene->s_count)
+		{
+			printf("\tSphere %d:\n", i + 1);
+			printf("\t\tCenter: %.2f, %.2f, %.2f\n",
+				scene->spheres[i].center.x,
+				scene->spheres[i].center.y,
+				scene->spheres[i].center.z);
+			printf("\t\tDiameter: %.2f\n",
+				scene->spheres[i].diameter);
+			printf("\t\tRGB: %d, %d, %d\n",
+				scene->spheres[i].rgb[0],
+				scene->spheres[i].rgb[1],
+				scene->spheres[i].rgb[2]);
+			i++;
+		}
+	}
+		if (scene->p_count >= 1)
+	{
+		int i;
+
+		i = 0;
+		while (i < scene->p_count)
+		{
+			printf("\tPlane %d:\n", i + 1);
+			printf("\t\tCenter: %.2f, %.2f, %.2f\n",
+				scene->planes[i].center.x,
+				scene->planes[i].center.y,
+				scene->planes[i].center.z);
+			printf("\t\tNormal: %.2f, %.2f, %.2f\n",
+				scene->planes[i].normal_v.x,
+				scene->planes[i].normal_v.y,
+				scene->planes[i].normal_v.z);
+			printf("\t\tRGB: %d, %d, %d\n",
+				scene->planes[i].rgb[0],
+				scene->planes[i].rgb[1],
+				scene->planes[i].rgb[2]);
+			i++;
+		}
 	}
 }
 
 int main(int ac, char **av)
 {
 	t_scene	scene;
-
+	
+	scene.s_index = 0;
+	scene.p_index = 0;
 	check_args(ac, av);
 	init_scene(&scene);
 	count_objects(&scene, av[1]);
@@ -60,4 +106,6 @@ int main(int ac, char **av)
 	return (0);
 }
 
-
+/*
+falta cerrar fd
+*/

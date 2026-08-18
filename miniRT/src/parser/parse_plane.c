@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_sphere.c                                     :+:      :+:    :+:   */
+/*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/18 15:53:20 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/18 18:35:59 by lrey-mol         ###   ########.fr       */
+/*   Created: 2026/08/18 18:41:25 by lrey-mol          #+#    #+#             */
+/*   Updated: 2026/08/18 18:58:25 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,35 @@ static bool	parse_center(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&cord);
 		return (false);
 	}
-	scene->spheres[scene->s_index].center.x = ft_atof(cord[0]);
-	scene->spheres[scene->s_index].center.y = ft_atof(cord[1]);
-	scene->spheres[scene->s_index].center.z = ft_atof(cord[2]);
-	ft_free_matrix((void ***) &cord);
+	scene->planes->center.x = ft_atof(cord[0]);
+	scene->planes->center.y = ft_atof(cord[1]);
+	scene->planes->center.z = ft_atof(cord[2]);
+	ft_free_matrix((void ***)&cord);
 	return (true);
 }
 
-static bool	parse_diameter(t_scene *scene, char **data)
+static bool	parse_orient(t_scene *scene, char **data)
 {
-	double	diameter;
+	char	**norm;
 
-	if (!ft_is_str_double(data[2]))
+	norm = ft_split(data[2], ',');
+	if (!ft_is_str_double(norm[0]) || !ft_is_str_double(norm[1])
+		|| !ft_is_str_double(norm[2]))
+	{
+		ft_free_matrix((void ***)&norm);
 		return (false);
-	diameter = atof(data[2]);
-	if (diameter <= 0)
+	}
+	if (((ft_atof(norm[0]) < -1) && (ft_atof(norm[0]) > 1))
+		|| ((ft_atof(norm[1]) < -1) && (ft_atof(norm[1]) > 1))
+		|| ((ft_atof(norm[2]) < -1) && (ft_atof(norm[2]) > 1)))
+	{
+		ft_free_matrix((void ***)&norm);
 		return (false);
-	scene->spheres[scene->s_index].diameter = atof(data[2]);
+	}
+	scene->planes->normal_v.x = ft_atof(norm[0]);
+	scene->planes->normal_v.y = ft_atof(norm[1]);
+	scene->planes->normal_v.z = ft_atof(norm[2]);
+	ft_free_matrix((void ***)&norm);
 	return (true);
 }
 
@@ -54,21 +66,21 @@ static bool	parse_rgb(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&rgb);
 		return (false);
 	}
-	scene->spheres[scene->s_index].rgb[0] = ft_atoi(rgb[0]);
-	scene->spheres[scene->s_index].rgb[1] = ft_atoi(rgb[1]);
-	scene->spheres[scene->s_index].rgb[2] = ft_atoi(rgb[2]);
+	scene->planes[scene->p_index].rgb[0] = ft_atoi(rgb[0]);
+	scene->planes[scene->p_index].rgb[1] = ft_atoi(rgb[1]);
+	scene->planes[scene->p_index].rgb[2] = ft_atoi(rgb[2]);
 	ft_free_matrix((void ***)&rgb);
-	scene->s_index++;
+	scene->p_index++;
 	return (true);
 }
 
-bool	parse_sphere(t_scene *scene, char **data)
+bool	parse_plane(t_scene *scene, char **data)
 {
 	if (!parse_init(4, data))
 		return (false);
 	if (!parse_center(scene, data))
 		return (false);
-	if (!parse_diameter(scene, data))
+	if (!parse_orient(scene, data))
 		return (false);
 	if (!parse_rgb(scene, data))
 		return (false);

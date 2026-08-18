@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 16:31:39 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 18:40:59 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ static bool	parse_data(t_scene *scene, char **data)
 		parse_camera(scene, data);
 	else if (ft_strcmp(data[0], "L") == 0)
 		parse_light(scene, data);
+	else if (ft_strcmp(data[0], "sp") == 0)
+		parse_sphere(scene, data);
+	else if (ft_strcmp(data[0], "pl") == 0)
+		parse_plane(scene, data);
 	return (true);
 }
 

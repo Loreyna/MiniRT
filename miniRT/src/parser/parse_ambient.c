@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 15:49:50 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 17:37:25 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static bool	parse_rgb(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&rgb);
 		return (false);
 	}
-	scene->ambient[0].rgb[0] = ft_atoi(rgb[0]);
-	scene->ambient[0].rgb[1] = ft_atoi(rgb[1]);
-	scene->ambient[0].rgb[2] = ft_atoi(rgb[2]);
+	scene->ambient->rgb[0] = ft_atoi(rgb[0]);
+	scene->ambient->rgb[1] = ft_atoi(rgb[1]);
+	scene->ambient->rgb[2] = ft_atoi(rgb[2]);
 	ft_free_matrix((void ***)&rgb);
 	return (true);
 }

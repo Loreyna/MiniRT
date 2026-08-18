@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 15:48:57 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/18 18:50:32 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,9 @@ typedef struct s_scene
 	bool			has_camera;
 	bool			has_light;
 	int			s_count;
+	int			s_index;
 	int			p_count;
+	int			p_index;
 	int			cyl_count;
 
 	t_ambient	*ambient;
@@ -140,5 +142,7 @@ void	parse_objects(t_scene *scene, char *filename);
 bool	parse_ambient(t_scene *scene, char **data);
 bool	parse_camera(t_scene *scene, char **data);
 bool	parse_light(t_scene *scene, char **data);
+bool	parse_sphere(t_scene *scene, char **data);
+bool	parse_plane(t_scene *scene, char **data);
 
 #endif
