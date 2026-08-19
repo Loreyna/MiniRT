@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/19 15:56:59 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/19 17:24:29 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,17 @@ typedef struct s_scene
 	t_plane		*planes;
 	t_cylinder	*cylinders;
 }				t_scene;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*window;
+	void	*image;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_mlx;
 
 //Memory
 void	init_scene(t_scene *scene);

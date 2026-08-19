@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/19 17:04:01 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/19 17:09:03 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ bool	ft_is_str_double(char *s)
 			return (false);
 		if(s[i] == '.')
 			dot_count++;
+		if(s[i] == '.' && (s[i + 1] == '\0'))
+			return (false);
 		i++;
 	}
 	if(dot_count != 0 && dot_count != 1)
