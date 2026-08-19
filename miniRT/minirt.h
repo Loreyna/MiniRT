@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 18:50:32 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/19 15:56:59 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINIRT_H
 
 // Allowed Libraries
-# include "../libft/libft.h"
+# include "libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdint.h>
@@ -119,6 +119,7 @@ typedef struct s_scene
 	int			p_count;
 	int			p_index;
 	int			cyl_count;
+	int			c_index;
 
 	t_ambient	*ambient;
 	t_camera	*cam;
@@ -144,5 +145,6 @@ bool	parse_camera(t_scene *scene, char **data);
 bool	parse_light(t_scene *scene, char **data);
 bool	parse_sphere(t_scene *scene, char **data);
 bool	parse_plane(t_scene *scene, char **data);
+bool	parse_cylinder(t_scene *scene, char **data);
 
 #endif

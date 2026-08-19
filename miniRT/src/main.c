@@ -65,7 +65,7 @@ static void	print_scene(t_scene *scene)
 			i++;
 		}
 	}
-		if (scene->p_count >= 1)
+	if (scene->p_count >= 1)
 	{
 		int i;
 
@@ -88,14 +88,39 @@ static void	print_scene(t_scene *scene)
 			i++;
 		}
 	}
+	if (scene->cyl_count >= 1)
+	{
+		int i;
+
+		i = 0;
+		while (i < scene->cyl_count)
+		{
+			printf("\tCylinder %d:\n", i + 1);
+			printf("\t\tCenter: %.2f, %.2f, %.2f\n",
+				scene->cylinders[i].center.x,
+				scene->cylinders[i].center.y,
+				scene->cylinders[i].center.z);
+			printf("\t\tDiameter: %.2f\n",
+				scene->cylinders[i].diameter);
+			printf("\t\tHeight: %.2f\n",
+				scene->cylinders[i].height);
+			printf("\t\tAxis: %.2f, %.2f, %.2f\n",
+				scene->cylinders[i].axis_v.x,
+				scene->cylinders[i].axis_v.y,
+				scene->cylinders[i].axis_v.z);
+			printf("\t\tRGB: %d, %d, %d\n",
+				scene->cylinders[i].rgb[0],
+				scene->cylinders[i].rgb[1],
+				scene->cylinders[i].rgb[2]);
+			i++;
+		}
+	}
 }
 
 int main(int ac, char **av)
 {
 	t_scene	scene;
 	
-	scene.s_index = 0;
-	scene.p_index = 0;
 	check_args(ac, av);
 	init_scene(&scene);
 	count_objects(&scene, av[1]);
@@ -105,7 +130,3 @@ int main(int ac, char **av)
 	free_scene(&scene);
 	return (0);
 }
-
-/*
-falta cerrar fd
-*/

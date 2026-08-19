@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_plane.c                                      :+:      :+:    :+:   */
+/*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/18 18:41:25 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/19 15:51:37 by lrey-mol         ###   ########.fr       */
+/*   Created: 2026/08/19 15:17:35 by lrey-mol          #+#    #+#             */
+/*   Updated: 2026/08/19 16:00:49 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static bool	parse_center(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&cord);
 		return (false);
 	}
-	scene->planes[scene->p_index].center.x = ft_atof(cord[0]);
-	scene->planes[scene->p_index].center.y = ft_atof(cord[1]);
-	scene->planes[scene->p_index].center.z = ft_atof(cord[2]);
-	ft_free_matrix((void ***)&cord);
+	scene->cylinders[scene->c_index].center.x = ft_atof(cord[0]);
+	scene->cylinders[scene->c_index].center.y = ft_atof(cord[1]);
+	scene->cylinders[scene->c_index].center.z = ft_atof(cord[2]);
+	ft_free_matrix((void ***) &cord);
 	return (true);
 }
 
@@ -48,10 +48,30 @@ static bool	parse_orient(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&norm);
 		return (false);
 	}
-	scene->planes[scene->p_index].normal_v.x = ft_atof(norm[0]);
-	scene->planes[scene->p_index].normal_v.y = ft_atof(norm[1]);
-	scene->planes[scene->p_index].normal_v.z = ft_atof(norm[2]);
+	scene->cylinders[scene->c_index].axis_v.x = ft_atof(norm[0]);
+	scene->cylinders[scene->c_index].axis_v.y = ft_atof(norm[1]);
+	scene->cylinders[scene->c_index].axis_v.z = ft_atof(norm[2]);
 	ft_free_matrix((void ***)&norm);
+	return (true);
+}
+
+static bool	parse_dimentions(t_scene *scene, char **data)
+{
+	double	diameter;
+    double  height;
+
+	if (!ft_is_str_double(data[3]))
+		return (false);
+	diameter = atof(data[3]);
+	if (diameter <= 0)
+		return (false);
+	scene->cylinders[scene->c_index].diameter = diameter;
+    if (!ft_is_str_double(data[4]))
+		return (false);
+	height = atof(data[4]);
+	if (height <= 0)
+		return (false);
+	scene->cylinders[scene->c_index].height =height;
 	return (true);
 }
 
@@ -59,30 +79,32 @@ static bool	parse_rgb(t_scene *scene, char **data)
 {
 	char	**rgb;
 
-	rgb = ft_split(data[3], ',');
+	rgb = ft_split(data[5], ',');
 	if (!ft_is_str_numeric(rgb[0]) || !ft_is_str_numeric(rgb[1])
 		|| !ft_is_str_numeric(rgb[2]) || !rgb_check(rgb))
 	{
 		ft_free_matrix((void ***)&rgb);
 		return (false);
 	}
-	scene->planes[scene->p_index].rgb[0] = ft_atoi(rgb[0]);
-	scene->planes[scene->p_index].rgb[1] = ft_atoi(rgb[1]);
-	scene->planes[scene->p_index].rgb[2] = ft_atoi(rgb[2]);
+	scene->cylinders[scene->c_index].rgb[0] = ft_atoi(rgb[0]);
+	scene->cylinders[scene->c_index].rgb[1] = ft_atoi(rgb[1]);
+	scene->cylinders[scene->c_index].rgb[2] = ft_atoi(rgb[2]);
 	ft_free_matrix((void ***)&rgb);
 	return (true);
 }
 
-bool	parse_plane(t_scene *scene, char **data)
+bool parse_cylinder(t_scene *scene, char **data)
 {
-	if (!parse_init(4, data))
+    if (!parse_init(6, data))
 		return (false);
 	if (!parse_center(scene, data))
 		return (false);
-	if (!parse_orient(scene, data))
+    if (!parse_orient(scene, data))
 		return (false);
-	if (!parse_rgb(scene, data))
-		return (false);	
-	scene->p_index++;
-	return (true);
+    if (!parse_dimentions(scene, data))
+		return (false);
+    if (!parse_rgb(scene, data))
+		return (false);
+    scene->c_index++;
+    return (true);
 }

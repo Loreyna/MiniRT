@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 15:53:20 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/18 18:35:59 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/19 15:51:24 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static bool	parse_rgb(t_scene *scene, char **data)
 	scene->spheres[scene->s_index].rgb[1] = ft_atoi(rgb[1]);
 	scene->spheres[scene->s_index].rgb[2] = ft_atoi(rgb[2]);
 	ft_free_matrix((void ***)&rgb);
-	scene->s_index++;
 	return (true);
 }
 
@@ -72,5 +71,6 @@ bool	parse_sphere(t_scene *scene, char **data)
 		return (false);
 	if (!parse_rgb(scene, data))
 		return (false);
+	scene->s_index++;
 	return (true);
 }
