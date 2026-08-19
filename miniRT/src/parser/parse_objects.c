@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/19 15:56:30 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/19 16:05:49 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static bool	parse_data(t_scene *scene, char **data)
 		parse_plane(scene, data);
 	else if (ft_strcmp(data[0], "cy") == 0)
 		parse_cylinder(scene, data);
+	else
+		return (false);
 	return (true);
 }
 
