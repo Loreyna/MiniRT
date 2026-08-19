@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 15:43:54 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/19 16:55:07 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ void	count_objects(t_scene *scene, char *filename)
 		ft_free_matrix((void ***)&data);
 		line = get_next_line(fd);
 	}
+	printf("Objects counted successfully");
 	close(fd);
 }

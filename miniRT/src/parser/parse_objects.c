@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/19 16:05:49 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/19 16:57:59 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,27 @@ bool	parse_init(int argc, char **data)
 
 static bool	parse_data(t_scene *scene, char **data)
 {
+	bool success;
+	
+	success = false;
 	if (ft_strcmp(data[0], "A") == 0)
-		parse_ambient(scene, data);
+		success = parse_ambient(scene, data);
 	else if (ft_strcmp(data[0], "C") == 0)
-		parse_camera(scene, data);
+		success = parse_camera(scene, data);
 	else if (ft_strcmp(data[0], "L") == 0)
-		parse_light(scene, data);
+		success = parse_light(scene, data);
 	else if (ft_strcmp(data[0], "sp") == 0)
-		parse_sphere(scene, data);
+		success = parse_sphere(scene, data);
 	else if (ft_strcmp(data[0], "pl") == 0)
-		parse_plane(scene, data);
+		success = parse_plane(scene, data);
 	else if (ft_strcmp(data[0], "cy") == 0)
-		parse_cylinder(scene, data);
-	else
-		return (false);
-	return (true);
+		success = parse_cylinder(scene, data);
+	else if (ft_strcmp(data[0], "\n") == 0)
+		return (true);
+
+	if (success)
+		return (true);
+	return (false);
 }
 
 bool	rgb_check(char **rgb)
