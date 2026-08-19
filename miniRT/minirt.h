@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/19 17:24:29 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/19 17:53:12 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 // Allowed Libraries
+# include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
@@ -129,16 +130,6 @@ typedef struct s_scene
 	t_cylinder	*cylinders;
 }				t_scene;
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*window;
-	void	*image;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_mlx;
 
 //Memory
 void	init_scene(t_scene *scene);

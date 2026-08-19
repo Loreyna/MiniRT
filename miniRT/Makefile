@@ -6,6 +6,9 @@ CFLAGS			+= -fsanitize=address -fno-omit-frame-pointer
 RM				= rm -rf
 
 LIBFT_DIR		= ./libft
+MLX42_DIR		= ./MLX42
+MLX42_LIB		= $(MLX42_DIR)/build/libmlx42.a
+MLX42_HEADERS		= $(MLX42_DIR)/include/MLX42/MLX42.h
 SRC_DIR			= ./src
 BUILD_DIR		= ./.build
 
@@ -13,10 +16,10 @@ TARGET			= $(BUILD_DIR)/.project
 LIBFT			= $(LIBFT_DIR)/libft.a
 LIBFT_HEADERS	= $(LIBFT_DIR)/libft.h
 
-HEADERS			= -I $(LIBFT_DIR)
+HEADERS			= -I $(LIBFT_DIR) -I $(MLX42_DIR)/include
 INC				= $(HEADERS)
 
-LIBS			= $(LIBFT)
+LIBS			= $(LIBFT) $(MLX42_LIB) -ldl -lglfw -pthread -lm
 
 SRCS			= $(addprefix $(SRC_DIR)/,				\
 					main.c					\
@@ -70,7 +73,7 @@ all: $(NAME)
 
 $(NAME): $(TARGET)
 
-$(TARGET): $(OBJS) $(LIBFT)
+$(TARGET): $(OBJS) $(LIBFT) $(MLX42_LIB)
 	@echo "Creating $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJS) $(INC) $(LIBS) -o $(NAME)
 	@touch $(TARGET)
@@ -81,7 +84,7 @@ $(TARGET): $(OBJS) $(LIBFT)
 #                                 COMPILING                                    #
 # **************************************************************************** #
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT_HEADERS) $(LIBFT)
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT_HEADERS) $(LIBFT) $(MLX42_HEADERS) $(MLX42_LIB)
 	@echo "Compiling $<..."
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< $(INC) -o $@
@@ -95,6 +98,16 @@ $(LIBFT): $(LIBFT_HEADERS)
 	@echo "Compiling libft..."
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 	@echo "Libft done! :D"
+
+# **************************************************************************** #
+#                                   MLX42                                      #
+# **************************************************************************** #
+
+$(MLX42_LIB):
+	@echo "Compiling MLX42..."
+	@cmake -S $(MLX42_DIR) -B $(MLX42_DIR)/build
+	@cmake --build $(MLX42_DIR)/build -j4
+	@echo "MLX42 done! :D"
 
 
 # **************************************************************************** #

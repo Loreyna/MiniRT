@@ -117,16 +117,23 @@ static void	print_scene(t_scene *scene)
 	}
 }
 
+
 int main(int ac, char **av)
 {
 	t_scene	scene;
-	
+	mlx_t	*mlx;
+
 	check_args(ac, av);
 	init_scene(&scene);
 	count_objects(&scene, av[1]);
 	allocate_scene(&scene);
 	parse_objects(&scene, av[1]);
 	print_scene(&scene);
+	mlx = mlx_init(900, 900, "miniRT", true);
+	if(!mlx)
+		error_exit("Error\n", "Bad mlx initialization", 99);
+	//render
 	free_scene(&scene);
+	mlx_terminate(mlx);
 	return (0);
 }
