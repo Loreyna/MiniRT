@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/20 16:53:24 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/20 17:20:28 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <math.h>
 # include <stdint.h>
 # include <unistd.h>
+
+typedef struct s_quadratic
+{
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
+	double	t1;
+	double	t2;
+}	t_quadratic;
 
 // Vectors
 typedef struct s_vec3
