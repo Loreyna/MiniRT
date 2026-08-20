@@ -24,7 +24,7 @@ LIBS			= $(LIBFT) $(MLX42_LIB) -ldl -lglfw -pthread -lm
 SRCS			= $(addprefix $(SRC_DIR)/,				\
 					main.c					\
 					)
-BASE_DIR_RAY = $(SRC_DIR)/ray
+BASE_DIR_RAY = $(SRC_DIR)/render
 SRCS		+= $(addprefix $(BASE_DIR_RAY)/,				\
 					ray_at.c				\
 					ray_create.c				\

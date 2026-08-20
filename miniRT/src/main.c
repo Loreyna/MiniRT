@@ -122,6 +122,7 @@ int main(int ac, char **av)
 {
 	t_scene	scene;
 	mlx_t	*mlx;
+	mlx_image_t	*img;
 
 	check_args(ac, av);
 	init_scene(&scene);
@@ -132,7 +133,11 @@ int main(int ac, char **av)
 	mlx = mlx_init(900, 900, "miniRT", true);
 	if(!mlx)
 		error_exit("Error\n", "Bad mlx initialization", 99);
-	//render
+	img = mlx_new_image(mlx, 900, 900);
+	mlx_image_to_window(mlx, img, 0, 0);
+	mlx_put_pixel(img, 450, 450, 0xFF0000FF);
+	mlx_loop(mlx);
+	render(scene, img);
 	free_scene(&scene);
 	mlx_terminate(mlx);
 	return (0);
