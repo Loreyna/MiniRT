@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/19 18:38:46 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/20 16:53:24 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@
 # include <math.h>
 # include <stdint.h>
 # include <unistd.h>
-
-// Cordenades
-typedef struct s_cord
-{
-	double		x;
-	double		y;
-	double		z;
-}				t_cord;
 
 // Vectors
 typedef struct s_vec3
@@ -61,7 +53,7 @@ typedef struct s_hit
 {
 	bool hit;	// ha chocado?
 	double t;	// distancia hasta el choque?
-	t_cord point;	// Donde ha sido el impacto?
+	t_vec3 point;	// Donde ha sido el impacto?
 	t_vec3 normal;	// Que direccion tiene la superficie en ese punto?
 }				t_hit;
 
@@ -74,35 +66,35 @@ typedef struct s_ambient
 
 typedef struct s_camera
 {
-	t_cord		cordinates;
+	t_vec3		cordinates;
 	t_vec3		orientation;
 	uint8_t		fov;
 }				t_camera;
 
 typedef struct s_light
 {
-	t_cord		cordinates;
+	t_vec3		cordinates;
 	double		brightness;
 	uint8_t		rgb[3];
 }				t_light;
 
 typedef struct s_sphere
 {
-	t_cord		center;
+	t_vec3		center;
 	double		diameter;
 	uint8_t		rgb[3];
 }				t_sphere;
 
 typedef struct s_plane
 {
-	t_cord		center;
+	t_vec3		center;
 	t_vec3		normal_v;
 	uint8_t		rgb[3];
 }				t_plane;
 
 typedef struct s_cylinder
 {
-	t_cord		center;
+	t_vec3		center;
 	double		diameter;
 	double		height;
 	t_vec3		axis_v;

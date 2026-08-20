@@ -137,7 +137,7 @@ int main(int ac, char **av)
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_put_pixel(img, 450, 450, 0xFF0000FF);
 	mlx_loop(mlx);
-	render(scene, img);
+	//render(scene, img);
 	free_scene(&scene);
 	mlx_terminate(mlx);
 	return (0);

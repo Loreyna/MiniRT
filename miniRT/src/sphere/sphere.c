@@ -2,12 +2,12 @@
 
 /*typedef struct s_sphere
 {
-	t_cord	center;
+	t_vec3	center;
 	double	diameter;
 	uint8_t	rgb[3];
 } t_sphere;*/
 
-t_sphere sphere_create (t_cord center, double diameter, uint8_t rgb[3])
+t_sphere sphere_create (t_vec3 center, double diameter, uint8_t rgb[3])
 {
 	t_sphere sphere;
 
