@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/20 17:20:28 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/20 18:39:10 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,7 @@ typedef struct s_scene
 }				t_scene;
 
 
-
-
-//Memory
+// Memory
 void	init_scene(t_scene *scene);
 void	free_scene(t_scene *scene);
 void	allocate_scene(t_scene *scene);
@@ -153,5 +151,8 @@ bool	parse_sphere(t_scene *scene, char **data);
 bool	parse_plane(t_scene *scene, char **data);
 bool	parse_cylinder(t_scene *scene, char **data);
 // Render
+
+// Graphics
+mlx_t	*create_window(int height, int width);
 
 #endif

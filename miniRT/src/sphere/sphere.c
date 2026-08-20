@@ -44,6 +44,7 @@ bool is_sphere_hit(t_ray ray, t_sphere sphere, double *t)
 /*
 a*t² + b*t + c = 0
 
+<<<<<<< HEAD
 a = dirección · dirección
 b = 2 * (oc · dirección)
 c = oc · oc - radio²

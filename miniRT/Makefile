@@ -63,6 +63,11 @@ SRCS		+= $(addprefix $(BASE_DIR_MEMORY)/,				\
 					allocate_scene.c			\
 					)
 
+BASE_DIR_GRAPHICS = $(SRC_DIR)/graphics
+SRCS		+= $(addprefix $(BASE_DIR_GRAPHICS)/,				\
+					create_window.c				\
+					)
+
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 # **************************************************************************** #

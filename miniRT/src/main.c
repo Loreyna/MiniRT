@@ -117,7 +117,6 @@ static void	print_scene(t_scene *scene)
 	}
 }
 
-
 int main(int ac, char **av)
 {
 	t_scene	scene;
@@ -130,9 +129,7 @@ int main(int ac, char **av)
 	allocate_scene(&scene);
 	parse_objects(&scene, av[1]);
 	print_scene(&scene);
-	mlx = mlx_init(900, 900, "miniRT", true);
-	if(!mlx)
-		error_exit("Error\n", "Bad mlx initialization", 99);
+	mlx = create_window(900, 900);
 	img = mlx_new_image(mlx, 900, 900);
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_put_pixel(img, 450, 450, 0xFF0000FF);
