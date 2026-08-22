@@ -132,11 +132,10 @@ int main(int ac, char **av)
 	mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
 	if(!mlx)
 		error_exit("Error\n", "Bad mlx initialization", 99);
-	img = mlx_new_image(mlx, WIDTH, HEIGHT);//ancho, alto
+	img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	render(&scene, img);
 	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_put_pixel(img, 450, 450, 0xFF0000FF);
 	mlx_loop(mlx);
-	//render(scene, img);
 	free_scene(&scene);
 	mlx_terminate(mlx);
 	return (0);

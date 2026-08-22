@@ -1,8 +1,5 @@
 #include "../../minirt.h"
 
-/*"Dado un rayo y una esfera, ¿el rayo atraviesa la esfera?
-Si la atraviesa, ¿en qué punto ocurre el impacto?"
-*/
 bool is_sphere_hit(t_ray ray, t_sphere sphere, double *t)
 {
 	double	radius;

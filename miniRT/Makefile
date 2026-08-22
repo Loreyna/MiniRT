@@ -26,8 +26,7 @@ SRCS			= $(addprefix $(SRC_DIR)/,				\
 					)
 BASE_DIR_RAY = $(SRC_DIR)/render
 SRCS		+= $(addprefix $(BASE_DIR_RAY)/,				\
-					ray_at.c				\
-					ray_create.c				\
+					render.c				\
 					)
 BASE_DIR_SPHERE = $(SRC_DIR)/sphere
 SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\

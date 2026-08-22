@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/22 16:46:34 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/22 18:29:40 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,24 @@ typedef struct s_ray
 t_vec3			ray_at(t_ray ray, double t);
 t_ray			ray_create(t_vec3 origin, t_vec3 direction);
 
+typedef struct s_sphere
+{
+	t_vec3		center;
+	double		diameter;
+	uint8_t		rgb[3];
+	t_quadratic	q;
+}				t_sphere;
+
+bool	is_sphere_hit(t_ray ray, t_sphere sphere, double *t);
+
 typedef struct s_hit
 {
-	bool hit;	// ha chocado?
-	double t;	// distancia hasta el choque?
-	t_vec3 point;	// Donde ha sido el impacto?
-	t_vec3 normal;	// Que direccion tiene la superficie en ese punto?
-}				t_hit;
+	bool		hit;
+	double		t;
+	t_vec3		point;
+	t_vec3		normal;
+	t_sphere	*sphere;
+}	t_hit;
 
 // Objects
 typedef struct s_ambient
@@ -89,13 +100,6 @@ typedef struct s_light
 	double		brightness;
 	uint8_t		rgb[3];
 }				t_light;
-
-typedef struct s_sphere
-{
-	t_vec3		center;
-	double		diameter;
-	uint8_t		rgb[3];
-}				t_sphere;
 
 typedef struct s_plane
 {
@@ -153,7 +157,7 @@ bool	parse_sphere(t_scene *scene, char **data);
 bool	parse_plane(t_scene *scene, char **data);
 bool	parse_cylinder(t_scene *scene, char **data);
 // Render
-
+void	render (t_scene *scene, mlx_image_t *img);
 // Graphics
 mlx_t	*create_window(int height, int width);
 
