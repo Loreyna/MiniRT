@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/20 18:39:10 by viaremko         ###   ########.fr       */
+/*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
+/*   Updated: 2026/08/22 16:46:34 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <math.h>
 # include <stdint.h>
 # include <unistd.h>
+#define WIDTH 900
+#define HEIGHT 900
 
 typedef struct s_quadratic
 {

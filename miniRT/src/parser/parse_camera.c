@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viaremko <lodyiaremko@proton.me>           +#+  +:+       +#+        */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/18 15:21:27 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/20 18:29:52 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../minirt.h"
 
 static bool	parse_cords(t_scene *scene, char **data)
@@ -40,9 +41,9 @@ static bool	parse_orient(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&norm);
 		return (false);
 	}
-	if (((ft_atof(norm[0]) < -1) && (ft_atof(norm[0]) > 1))
-		|| ((ft_atof(norm[1]) < -1) && (ft_atof(norm[1]) > 1))
-		|| ((ft_atof(norm[2]) < -1) && (ft_atof(norm[2]) > 1)))
+	if (((ft_atof(norm[0]) < -1) || (ft_atof(norm[0]) > 1))
+		|| ((ft_atof(norm[1]) < -1) || (ft_atof(norm[1]) > 1))
+		|| ((ft_atof(norm[2]) < -1) || (ft_atof(norm[2]) > 1)))
 	{
 		ft_free_matrix((void ***)&norm);
 		return (false);
