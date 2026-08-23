@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/23 16:25:43 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/23 16:49:22 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,9 +164,9 @@ typedef struct s_hit
 	double		t;
 	t_vec3		point;
 	t_vec3		normal;
-	t_sphere	sphere;
-	t_cylinder	cylinder;
-	t_plane		plane;
+	t_sphere	*sphere;
+	t_cylinder	*cylinder;
+	t_plane		*plane;
 }	t_hit;
 
 #endif

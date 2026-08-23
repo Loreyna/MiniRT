@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 18:39:01 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/23 16:33:45 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/23 16:54:05 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ static t_hit	trace_ray(t_scene *scene, t_ray ray)
 	hit.normal = sphere_normal(
 			scene->spheres[index],
 			hit.point);
-	hit.sphere = scene->spheres[index];
+	hit.sphere = &scene->spheres[index];
 	return (hit);
 }
 
@@ -216,7 +216,8 @@ void render (t_scene *scene, mlx_image_t *img)
 				ray =  create_camera_ray(scene->cam, x , y);
 				hit = trace_ray(scene, ray);
 				if (hit.hit)
-					mlx_put_pixel(img, x, y, rgb_to_hex(hit.sphere.rgb));
+					mlx_put_pixel(img, x, y, rgb_to_hex(hit.sphere->rgb));
+
 			x++;
 		}
 		y++;
