@@ -67,6 +67,11 @@ SRCS		+= $(addprefix $(BASE_DIR_GRAPHICS)/,				\
 					create_window.c				\
 					)
 
+BASE_DIR_UTILS = $(SRC_DIR)/utils
+SRCS		+= $(addprefix $(BASE_DIR_UTILS)/,				\
+					rgb_to_hex.c				\
+					)
+
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 # **************************************************************************** #
