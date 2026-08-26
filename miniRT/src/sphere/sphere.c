@@ -1,5 +1,31 @@
 #include "../../minirt.h"
 
+bool	find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index)
+{
+	int		i;
+	double	t;
+
+	i = 0;
+	*closest_t = INFINITY;
+	*index = -1;
+
+	while (i < scene->s_count)
+	{
+		if (is_sphere_hit(ray, scene->spheres[i], &t))
+		{
+			if (t > 0 && t < *closest_t)
+			{
+				*closest_t = t;
+				*index = i;
+			}
+		}
+		i++;
+	}
+	if (*index == -1)
+		return (false);
+	return (true);
+}
+
 bool is_sphere_hit(t_ray ray, t_sphere sphere, double *t)
 {
 	double	radius;
@@ -30,7 +56,6 @@ bool is_sphere_hit(t_ray ray, t_sphere sphere, double *t)
 /*
 a*t² + b*t + c = 0
 
-<<<<<<< HEAD
 a = dirección · dirección
 b = 2 * (oc · dirección)
 c = oc · oc - radio²

@@ -24,13 +24,19 @@ LIBS			= $(LIBFT) $(MLX42_LIB) -ldl -lglfw -pthread -lm
 SRCS			= $(addprefix $(SRC_DIR)/,				\
 					main.c					\
 					)
-BASE_DIR_RAY = $(SRC_DIR)/render
+BASE_DIR_RENDER = $(SRC_DIR)/render
 SRCS		+= $(addprefix $(BASE_DIR_RAY)/,				\
 					render.c				\
 					)
 BASE_DIR_SPHERE = $(SRC_DIR)/sphere
 SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
-					sphere.c				\
+					sphere.c					\
+					s_render.c					\
+					)
+BASE_DIR_PLANE = $(SRC_DIR)/plane
+SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
+					plane.c					\
+					p_render.c					\
 					)
 
 BASE_DIR_VECTOR = $(SRC_DIR)/vector

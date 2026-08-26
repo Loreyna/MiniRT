@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/23 16:49:22 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/08/26 18:12:09 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_vec3		center;
+	t_vec3		point;
 	t_vec3		normal_v;
 	uint8_t		rgb[3];
 }				t_plane;
@@ -108,9 +108,9 @@ typedef struct s_cylinder
 // Scene
 typedef struct s_scene
 {
-	bool			has_ambient;
-	bool			has_camera;
-	bool			has_light;
+	bool		has_ambient;
+	bool		has_camera;
+	bool		has_light;
 	int			s_count;
 	int			s_index;
 	int			p_count;
@@ -146,7 +146,7 @@ bool	parse_plane(t_scene *scene, char **data);
 bool	parse_cylinder(t_scene *scene, char **data);
 
 // Render
-void	render (t_scene *scene, mlx_image_t *img);
+void	render_sphere (t_scene *scene, mlx_image_t *img);
 
 // Graphics
 mlx_t	*create_window(int height, int width);
@@ -157,6 +157,7 @@ uint32_t	rgb_to_hex(uint8_t rgb[3]);
 
 
 bool	is_sphere_hit(t_ray ray, t_sphere sphere, double *t);
+bool	find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index);
 
 typedef struct s_hit
 {
