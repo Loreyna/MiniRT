@@ -24,31 +24,17 @@ LIBS			= $(LIBFT) $(MLX42_LIB) -ldl -lglfw -pthread -lm
 SRCS			= $(addprefix $(SRC_DIR)/,				\
 					main.c					\
 					)
-BASE_DIR_RENDER = $(SRC_DIR)/render
-SRCS		+= $(addprefix $(BASE_DIR_RAY)/,				\
-					render.c				\
+BASE_DIR_GRAPHICS = $(SRC_DIR)/graphics
+SRCS		+= $(addprefix $(BASE_DIR_GRAPHICS)/,				\
+					create_window.c				\
 					)
-BASE_DIR_SPHERE = $(SRC_DIR)/sphere
-SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
-					sphere.c					\
-					s_render.c					\
+BASE_DIR_LIGHTING = $(SRC_DIR)/lighting
+SRCS		+= $(addprefix $(BASE_DIR_LIGHTING)/,				\
+					lighting.c				\
 					)
-BASE_DIR_PLANE = $(SRC_DIR)/plane
-SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
-					plane.c					\
-					p_render.c					\
-					)
-
-BASE_DIR_VECTOR = $(SRC_DIR)/vector
-SRCS		+= $(addprefix $(BASE_DIR_VECTOR)/,				\
-					vec3_add.c				\
-					vec3_create.c				\
-					vec3_cross.c				\
-					vec3_dot.c				\
-					vec3_length.c				\
-					vec3_normalize.c			\
-					vec3_scale.c				\
-					vec3_sub.c				\
+BASE_DIR_MEMORY = $(SRC_DIR)/memory
+SRCS		+= $(addprefix $(BASE_DIR_MEMORY)/,				\
+					allocate_scene.c			\
 					)
 BASE_DIR_PARSER = $(SRC_DIR)/parser
 SRCS		+= $(addprefix $(BASE_DIR_PARSER)/,				\
@@ -62,22 +48,40 @@ SRCS		+= $(addprefix $(BASE_DIR_PARSER)/,				\
 					parse_plane.c				\
 					parse_cylinder.c			\
 					)
-
-BASE_DIR_MEMORY = $(SRC_DIR)/memory
-SRCS		+= $(addprefix $(BASE_DIR_MEMORY)/,				\
-					allocate_scene.c			\
+BASE_DIR_PLANE = $(SRC_DIR)/plane
+SRCS		+= $(addprefix $(BASE_DIR_PLANE)/,				\
+					plane.c					\
+					p_render.c					\
 					)
-
-BASE_DIR_GRAPHICS = $(SRC_DIR)/graphics
-SRCS		+= $(addprefix $(BASE_DIR_GRAPHICS)/,				\
-					create_window.c				\
+BASE_DIR_RAY = $(SRC_DIR)/ray
+SRCS		+= $(addprefix $(BASE_DIR_RAY)/,				\
+					camera_ray.c				\
+					ray.c						\
 					)
-
+BASE_DIR_RENDER = $(SRC_DIR)/render
+SRCS		+= $(addprefix $(BASE_DIR_RENDER)/,				\
+					render.c				\
+					)
+BASE_DIR_SPHERE = $(SRC_DIR)/sphere
+SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
+					sphere.c					\
+					s_render.c					\
+					)
 BASE_DIR_UTILS = $(SRC_DIR)/utils
 SRCS		+= $(addprefix $(BASE_DIR_UTILS)/,				\
 					rgb_to_hex.c				\
 					)
-
+BASE_DIR_VECTOR = $(SRC_DIR)/vector
+SRCS		+= $(addprefix $(BASE_DIR_VECTOR)/,				\
+					vec3_add.c				\
+					vec3_create.c				\
+					vec3_cross.c				\
+					vec3_dot.c				\
+					vec3_length.c				\
+					vec3_normalize.c			\
+					vec3_scale.c				\
+					vec3_sub.c				\
+					)
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 # **************************************************************************** #

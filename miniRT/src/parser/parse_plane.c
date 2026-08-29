@@ -6,13 +6,13 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 18:41:25 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/19 15:51:37 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/29 17:31:39 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minirt.h"
 
-static bool	parse_center(t_scene *scene, char **data)
+static bool	parse_point(t_scene *scene, char **data)
 {
 	char	**cord;
 
@@ -23,9 +23,9 @@ static bool	parse_center(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&cord);
 		return (false);
 	}
-	scene->planes[scene->p_index].center.x = ft_atof(cord[0]);
-	scene->planes[scene->p_index].center.y = ft_atof(cord[1]);
-	scene->planes[scene->p_index].center.z = ft_atof(cord[2]);
+	scene->planes[scene->p_index].point.x = ft_atof(cord[0]);
+	scene->planes[scene->p_index].point.y = ft_atof(cord[1]);
+	scene->planes[scene->p_index].point.z = ft_atof(cord[2]);
 	ft_free_matrix((void ***)&cord);
 	return (true);
 }
@@ -77,7 +77,7 @@ bool	parse_plane(t_scene *scene, char **data)
 {
 	if (!parse_init(4, data))
 		return (false);
-	if (!parse_center(scene, data))
+	if (!parse_point(scene, data))
 		return (false);
 	if (!parse_orient(scene, data))
 		return (false);

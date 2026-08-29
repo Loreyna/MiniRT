@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/26 18:12:09 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/29 17:41:03 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <unistd.h>
 #define WIDTH 900
 #define HEIGHT 900
+
+
 
 typedef struct s_quadratic
 {
@@ -116,7 +118,7 @@ typedef struct s_scene
 	int			p_count;
 	int			p_index;
 	int			cyl_count;
-	int			c_index;
+	int			cyl_index;
 
 	t_ambient	*ambient;
 	t_camera	*cam;
@@ -126,6 +128,16 @@ typedef struct s_scene
 	t_cylinder	*cylinders;
 }				t_scene;
 
+typedef struct s_hit
+{
+	bool		hit;
+	double		t;
+	t_vec3		point;
+	t_vec3		normal;
+	t_sphere	*sphere;
+	t_cylinder	*cylinder;
+	t_plane		*plane;
+}	t_hit;
 
 // Memory
 void	init_scene(t_scene *scene);
@@ -148,26 +160,26 @@ bool	parse_cylinder(t_scene *scene, char **data);
 // Render
 void	render_sphere (t_scene *scene, mlx_image_t *img);
 
+//Lighting
+double calculate_diffuse(t_vec3 hit_point, t_vec3 normal, t_light *light);
+
 // Graphics
 mlx_t	*create_window(int height, int width);
 
 // Utils
 uint32_t	rgb_to_hex(uint8_t rgb[3]);
 
+//Ray
+t_ray	create_camera_ray(t_camera *cam, int x, int y);
+t_vec3 calculate_direction(t_camera *cam, int x, int y);
+void get_camera_basis(t_vec3 forward, t_vec3 *right, t_vec3 *up);
+
+//Esphere
+bool		is_sphere_hit(t_ray ray, t_sphere sphere, double *t);
+bool		find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index);
+t_vec3		sphere_normal(t_sphere sphere, t_vec3 point);
+uint32_t 	calculate_lighting(t_scene *scene, t_hit hit);
 
 
-bool	is_sphere_hit(t_ray ray, t_sphere sphere, double *t);
-bool	find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index);
-
-typedef struct s_hit
-{
-	bool		hit;
-	double		t;
-	t_vec3		point;
-	t_vec3		normal;
-	t_sphere	*sphere;
-	t_cylinder	*cylinder;
-	t_plane		*plane;
-}	t_hit;
 
 #endif

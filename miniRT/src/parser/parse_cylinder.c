@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 15:17:35 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/19 16:00:49 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/29 17:33:01 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static bool	parse_center(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&cord);
 		return (false);
 	}
-	scene->cylinders[scene->c_index].center.x = ft_atof(cord[0]);
-	scene->cylinders[scene->c_index].center.y = ft_atof(cord[1]);
-	scene->cylinders[scene->c_index].center.z = ft_atof(cord[2]);
+	scene->cylinders[scene->cyl_index].center.x = ft_atof(cord[0]);
+	scene->cylinders[scene->cyl_index].center.y = ft_atof(cord[1]);
+	scene->cylinders[scene->cyl_index].center.z = ft_atof(cord[2]);
 	ft_free_matrix((void ***) &cord);
 	return (true);
 }
@@ -48,9 +48,9 @@ static bool	parse_orient(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&norm);
 		return (false);
 	}
-	scene->cylinders[scene->c_index].axis_v.x = ft_atof(norm[0]);
-	scene->cylinders[scene->c_index].axis_v.y = ft_atof(norm[1]);
-	scene->cylinders[scene->c_index].axis_v.z = ft_atof(norm[2]);
+	scene->cylinders[scene->cyl_index].axis_v.x = ft_atof(norm[0]);
+	scene->cylinders[scene->cyl_index].axis_v.y = ft_atof(norm[1]);
+	scene->cylinders[scene->cyl_index].axis_v.z = ft_atof(norm[2]);
 	ft_free_matrix((void ***)&norm);
 	return (true);
 }
@@ -65,13 +65,13 @@ static bool	parse_dimentions(t_scene *scene, char **data)
 	diameter = atof(data[3]);
 	if (diameter <= 0)
 		return (false);
-	scene->cylinders[scene->c_index].diameter = diameter;
+	scene->cylinders[scene->cyl_index].diameter = diameter;
     if (!ft_is_str_double(data[4]))
 		return (false);
 	height = atof(data[4]);
 	if (height <= 0)
 		return (false);
-	scene->cylinders[scene->c_index].height =height;
+	scene->cylinders[scene->cyl_index].height =height;
 	return (true);
 }
 
@@ -86,9 +86,9 @@ static bool	parse_rgb(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&rgb);
 		return (false);
 	}
-	scene->cylinders[scene->c_index].rgb[0] = ft_atoi(rgb[0]);
-	scene->cylinders[scene->c_index].rgb[1] = ft_atoi(rgb[1]);
-	scene->cylinders[scene->c_index].rgb[2] = ft_atoi(rgb[2]);
+	scene->cylinders[scene->cyl_index].rgb[0] = ft_atoi(rgb[0]);
+	scene->cylinders[scene->cyl_index].rgb[1] = ft_atoi(rgb[1]);
+	scene->cylinders[scene->cyl_index].rgb[2] = ft_atoi(rgb[2]);
 	ft_free_matrix((void ***)&rgb);
 	return (true);
 }
@@ -105,6 +105,6 @@ bool parse_cylinder(t_scene *scene, char **data)
 		return (false);
     if (!parse_rgb(scene, data))
 		return (false);
-    scene->c_index++;
+    scene->cyl_index++;
     return (true);
 }

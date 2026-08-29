@@ -74,9 +74,9 @@ static void	print_scene(t_scene *scene)
 		{
 			printf("\tPlane %d:\n", i + 1);
 			printf("\t\tCenter: %.2f, %.2f, %.2f\n",
-				scene->planes[i].center.x,
-				scene->planes[i].center.y,
-				scene->planes[i].center.z);
+				scene->planes[i].point.x,
+				scene->planes[i].point.y,
+				scene->planes[i].point.z);
 			printf("\t\tNormal: %.2f, %.2f, %.2f\n",
 				scene->planes[i].normal_v.x,
 				scene->planes[i].normal_v.y,
