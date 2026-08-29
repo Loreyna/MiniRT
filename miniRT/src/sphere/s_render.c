@@ -6,13 +6,13 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 18:39:01 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/29 17:42:02 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/29 18:41:43 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minirt.h"
 
-uint32_t calculate_lighting(t_scene *scene, t_hit hit)//reducir o dividir
+static uint32_t calculate_lighting(t_scene *scene, t_hit hit)//reducir o dividir
 {
 	double  diffuse;
 	double  ambient;
@@ -50,8 +50,6 @@ uint32_t calculate_lighting(t_scene *scene, t_hit hit)//reducir o dividir
 
 	return (rgb_to_hex(f_rgb));
 }
-
-
 
 bool	find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index)
 {
@@ -118,7 +116,6 @@ void render_sphere (t_scene *scene, mlx_image_t *img)
 					uint32_t final_color = calculate_lighting(scene, hit);
 					mlx_put_pixel(img, x, y, final_color);
 				}
-
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/29 17:41:03 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/08/29 18:45:05 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,11 +174,16 @@ t_ray	create_camera_ray(t_camera *cam, int x, int y);
 t_vec3 calculate_direction(t_camera *cam, int x, int y);
 void get_camera_basis(t_vec3 forward, t_vec3 *right, t_vec3 *up);
 
+//plane
+void render_plane (t_scene *scene, mlx_image_t *img);
+bool is_plane_hit(t_ray ray, t_plane plane, double *t);
+
+
 //Esphere
 bool		is_sphere_hit(t_ray ray, t_sphere sphere, double *t);
 bool		find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index);
 t_vec3		sphere_normal(t_sphere sphere, t_vec3 point);
-uint32_t 	calculate_lighting(t_scene *scene, t_hit hit);
+//uint32_t 	calculate_lighting(t_scene *scene, t_hit hit);
 
 
 
