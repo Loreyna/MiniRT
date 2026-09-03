@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/29 18:45:05 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 17:13:33 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,6 @@
 #define HEIGHT 900
 
 
-
-typedef struct s_quadratic
-{
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
-	double	t1;
-	double	t2;
-}	t_quadratic;
-
 // Vectors
 typedef struct s_vec3
 {
@@ -43,6 +32,18 @@ typedef struct s_vec3
 	double		y;
 	double		z;
 }				t_vec3;
+
+typedef struct s_quadratic
+{
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
+	double	radius;
+	double	t1;
+	double	t2;
+	t_vec3	oc;
+}	t_quadratic;
 
 t_vec3			vec3_create(double x, double y, double z);
 t_vec3			vec3_add(t_vec3 a, t_vec3 b);
@@ -105,6 +106,7 @@ typedef struct s_cylinder
 	double		height;
 	t_vec3		axis_v;
 	uint8_t		rgb[3];
+	t_quadratic	q;
 }				t_cylinder;
 
 // Scene

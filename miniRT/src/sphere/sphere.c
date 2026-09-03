@@ -13,16 +13,14 @@ t_vec3	sphere_normal(t_sphere sphere, t_vec3 point)
 
 bool is_sphere_hit(t_ray ray, t_sphere sphere, double *t)
 {
-	double	radius;
-	t_vec3	oc;
 	t_quadratic q;
 
-	radius = sphere.diameter / 2.0;//calculamos el radio
+	q.radius = sphere.diameter / 2.0;//calculamos el radio
 
-	oc = vec3_sub(ray.origin, sphere.center);// vector desde el centro de la esfera al origen del rayo
+	q.oc = vec3_sub(ray.origin, sphere.center);// vector desde el centro de la esfera al origen del rayo
 	q.a = vec3_dot(ray.direction, ray.direction);
-	q.b = 2.0 * vec3_dot(oc, ray.direction); //ecuacion cuadratica (a²+ 2ab + b²)
-	q.c = vec3_dot(oc, oc) - radius * radius;
+	q.b = 2.0 * vec3_dot(q.oc, ray.direction); //ecuacion cuadratica (a²+ 2ab + b²)
+	q.c = vec3_dot(q.oc, q.oc) - q.radius * q.radius;
 
 	q.discriminant = q.b * q.b - 4.0 * q.a * q.c;//resultado de lo que hay dentro de la raiz cuadrada
 
