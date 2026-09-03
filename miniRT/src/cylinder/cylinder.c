@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 16:19:12 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/03 19:27:51 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 20:00:04 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vec3 cylinder_normal(t_vec3 hit_point, t_cylinder cylinder)
 	
 }
 
-static bool get_closest_t(t_quadratic q, double *t)
+/*static bool get_closest_t(t_quadratic q, double *t)
 {
 	if (q.t1 > 0 && q.t2 > 0)
 	{
@@ -59,8 +59,21 @@ static bool calculate_hit (t_ray ray, t_cylinder cylinder, double *t)
 	else if( height < -cylinder.height / 2)
 		return (false);
 	return (true);
-}
+}*/
 
+static bool validate_hit_height(t_ray ray, t_cylinder cylinder, double t, double *out_t)
+{
+    t_vec3 hit_point = ray_at(ray, t);
+    t_vec3 hit_to_center = vec3_sub(hit_point, cylinder.center);
+    double height = vec3_dot(hit_to_center, cylinder.axis_v);
+
+    if (height >= -cylinder.height / 2 && height <= cylinder.height / 2)
+    {
+        *out_t = t;
+        return (true);
+    }
+    return (false);
+}
 bool is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t)
 { 
 	t_quadratic q;
@@ -79,12 +92,28 @@ bool is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t)
 	q.discriminant = q.b * q.b - 4.0 * q.a * q.c;//resultado de lo que hay dentro de la raiz cuadrada
 	if (q.discriminant < 0)// no choca 
 		return (false); 
-	if(!get_closest_t(q, t))
+/*	if(!get_closest_t(q, t))
 		return (false);
 	if (!calculate_hit(ray, cylinder, t))
 	return (false);
 
-	return (true); 
+	return (true);*/
+	double sqrt_d = sqrt(q.discriminant);
+        double t1 = (-q.b - sqrt_d) / (2.0 * q.a);
+        double t2 = (-q.b + sqrt_d) / (2.0 * q.a);
+        if (t1 > t2) 
+        {
+                double temp = t1;
+                t1 = t2;
+                t2 = temp;
+        }
+        if (t1 > 0 && validate_hit_height(ray, cylinder, t1, t))
+                return (true);
+
+        if (t2 > 0 && validate_hit_height(ray, cylinder, t2, t))
+                return (true);
+ 
+        return (false);
 }
 
 /*

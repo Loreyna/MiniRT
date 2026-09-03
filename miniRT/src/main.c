@@ -135,8 +135,8 @@ int main(int ac, char **av)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if(scene.has_camera)
 	{
-		render_sphere(&scene, img);
 		render_plane (&scene, img);
+		render_sphere(&scene, img);
 		render_cylinder(&scene, img);
 	}
 	mlx_image_to_window(mlx, img, 0, 0);
