@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 16:53:16 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/29 18:42:17 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 17:14:19 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ static uint32_t calculate_lighting(t_scene *scene, t_hit hit)
 	i = 0;
 	while (i < 3)
 	{
-		color = hit.plane->rgb[i] *
-			(ambient * (scene->ambient->rgb[i] / 255.0)
-			+ diffuse * (scene->light->rgb[i] / 255.0));
+		double ambient_aux = 0.0;
+		double diffuse_aux = 0.0;
+		
+		if (scene->has_ambient && scene->ambient)
+			ambient_aux = ambient * (scene->ambient->rgb[i] / 255.0);
 
+		if (scene->has_light && scene->light)
+			diffuse_aux = diffuse * (scene->light->rgb[i] / 255.0);
+
+		color = hit.plane->rgb[i] * (ambient_aux + diffuse_aux);
 		if (color > 255)
 			color = 255;
 		f_rgb[i] = color;

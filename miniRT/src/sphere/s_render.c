@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 18:39:01 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/29 18:41:43 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 17:28:24 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,41 @@ static uint32_t calculate_lighting(t_scene *scene, t_hit hit)//reducir o dividir
 		diffuse = calculate_diffuse(hit.point, hit.normal, scene->light);
 	if (scene->has_ambient && scene->ambient)
 		ambient = scene->ambient->light_ratio;
-	// Mix Object Color with (Ambient + Diffuse) 
-	r = hit.sphere->rgb[0] * (ambient * (scene->ambient->rgb[0] / 255.0) 
-		+ diffuse * (scene->light->rgb[0] / 255.0));
-	g = hit.sphere->rgb[1] * (ambient * (scene->ambient->rgb[1] / 255.0) 
-		+ diffuse * (scene->light->rgb[1] / 255.0));
-	b = hit.sphere->rgb[2] * (ambient * (scene->ambient->rgb[2] / 255.0) 
-		+ diffuse * (scene->light->rgb[2] / 255.0));
+
+	 
+	double ambient_aux = 0.0; 
+	double diffuse_aux = 0.0;
+
+	if (scene->has_ambient && scene->ambient)
+		ambient_aux = ambient * (scene->ambient->rgb[0] / 255.0);
+	if (scene->has_light && scene->light)
+		diffuse_aux = diffuse * (scene->light->rgb[0] / 255.0);
+	r = hit.sphere->rgb[0] * (diffuse_aux + ambient_aux);
+
+	if (scene->has_ambient && scene->ambient)
+		ambient_aux = ambient * (scene->ambient->rgb[1] / 255.0);
+	if (scene->has_light && scene->light)
+		diffuse_aux = diffuse * (scene->light->rgb[1] / 255.0);
+	g = hit.sphere->rgb[1] * (diffuse_aux + ambient_aux);
+
+	if (scene->has_ambient && scene->ambient)
+		ambient_aux = ambient * (scene->ambient->rgb[2] / 255.0);
+	if (scene->has_light && scene->light)
+		diffuse_aux = diffuse * (scene->light->rgb[2] / 255.0);
+	b = hit.sphere->rgb[2] * (diffuse_aux + ambient_aux);
+
 	if(r > 255)
-	f_rgb[0] = 255;
+		f_rgb[0] = 255;
 	else 
-	f_rgb[0] = r;
+		f_rgb[0] = r;
 	if(g > 255)
-	f_rgb[1] = 255;
+		f_rgb[1] = 255;
 	else 
-	f_rgb[1] = g;
+		f_rgb[1] = g;
 	if(b > 255)
-	f_rgb[2] = 255;
+		f_rgb[2] = 255;
 	else 
-	f_rgb[2] = b;
+		f_rgb[2] = b;
 
 	return (rgb_to_hex(f_rgb));
 }
