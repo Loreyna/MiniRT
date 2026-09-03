@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:06:14 by viaremko          #+#    #+#             */
-/*   Updated: 2026/08/19 16:57:59 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/09/03 19:04:25 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ bool	parse_init(int argc, char **data)
 
 static bool	parse_data(t_scene *scene, char **data)
 {
-	bool success;
-	
+	bool	success;
+
 	success = false;
 	if (ft_strcmp(data[0], "A") == 0)
 		success = parse_ambient(scene, data);
@@ -44,7 +44,6 @@ static bool	parse_data(t_scene *scene, char **data)
 		success = parse_cylinder(scene, data);
 	else if (ft_strcmp(data[0], "\n") == 0)
 		return (true);
-
 	if (success)
 		return (true);
 	return (false);

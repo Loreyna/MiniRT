@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_cylinder.c                                   :+:      :+:    :+:   */
+/*   norm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 15:17:35 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/29 17:33:01 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 19:00:54 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	parse_center(t_scene *scene, char **data)
 	scene->cylinders[scene->cyl_index].center.x = ft_atof(cord[0]);
 	scene->cylinders[scene->cyl_index].center.y = ft_atof(cord[1]);
 	scene->cylinders[scene->cyl_index].center.z = ft_atof(cord[2]);
-	ft_free_matrix((void ***) &cord);
+	ft_free_matrix((void ***)&cord);
 	return (true);
 }
 
@@ -58,7 +58,7 @@ static bool	parse_orient(t_scene *scene, char **data)
 static bool	parse_dimentions(t_scene *scene, char **data)
 {
 	double	diameter;
-    double  height;
+	double	height;
 
 	if (!ft_is_str_double(data[3]))
 		return (false);
@@ -66,12 +66,12 @@ static bool	parse_dimentions(t_scene *scene, char **data)
 	if (diameter <= 0)
 		return (false);
 	scene->cylinders[scene->cyl_index].diameter = diameter;
-    if (!ft_is_str_double(data[4]))
+	if (!ft_is_str_double(data[4]))
 		return (false);
 	height = atof(data[4]);
 	if (height <= 0)
 		return (false);
-	scene->cylinders[scene->cyl_index].height =height;
+	scene->cylinders[scene->cyl_index].height = height;
 	return (true);
 }
 
@@ -93,18 +93,18 @@ static bool	parse_rgb(t_scene *scene, char **data)
 	return (true);
 }
 
-bool parse_cylinder(t_scene *scene, char **data)
+bool	parse_cylinder(t_scene *scene, char **data)
 {
-    if (!parse_init(6, data))
+	if (!parse_init(6, data))
 		return (false);
 	if (!parse_center(scene, data))
 		return (false);
-    if (!parse_orient(scene, data))
+	if (!parse_orient(scene, data))
 		return (false);
-    if (!parse_dimentions(scene, data))
+	if (!parse_dimentions(scene, data))
 		return (false);
-    if (!parse_rgb(scene, data))
+	if (!parse_rgb(scene, data))
 		return (false);
-    scene->cyl_index++;
-    return (true);
+	scene->cyl_index++;
+	return (true);
 }

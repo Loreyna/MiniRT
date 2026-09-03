@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 18:41:25 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/08/29 17:31:39 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 19:02:23 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ bool	parse_plane(t_scene *scene, char **data)
 	if (!parse_orient(scene, data))
 		return (false);
 	if (!parse_rgb(scene, data))
-		return (false);	
+		return (false);
 	scene->p_index++;
 	return (true);
 }
