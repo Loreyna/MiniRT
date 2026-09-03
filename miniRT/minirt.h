@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/03 17:13:33 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 18:23:38 by viaremko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ mlx_t	*create_window(int height, int width);
 
 // Utils
 uint32_t	rgb_to_hex(uint8_t rgb[3]);
+void	escape_cfg(mlx_key_data_t keydata, void *param);
 
 //Ray
 t_ray	create_camera_ray(t_camera *cam, int x, int y);

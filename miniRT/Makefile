@@ -70,6 +70,7 @@ SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
 BASE_DIR_UTILS = $(SRC_DIR)/utils
 SRCS		+= $(addprefix $(BASE_DIR_UTILS)/,				\
 					rgb_to_hex.c				\
+					escape_cfg.c				\
 					)
 BASE_DIR_VECTOR = $(SRC_DIR)/vector
 SRCS		+= $(addprefix $(BASE_DIR_VECTOR)/,				\
