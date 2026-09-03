@@ -6,26 +6,27 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 16:19:12 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/03 18:10:02 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/03 19:27:51 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minirt.h"
 
-
-
-/*
-a = (dirección · dirección) - (dirección · eje)²
-b = 2 * ((oc · dirección) - (oc · eje) * (dirección · eje))
-c = (oc · oc) - (oc · eje)² - radio²
-
-*/
 t_vec3 cylinder_normal(t_vec3 hit_point, t_cylinder cylinder)
 {
+	t_vec3 normal;
+	t_vec3 to_hit;
+	double projection;
+
+	to_hit = vec3_sub(hit_point, cylinder.center);
+	projection =  vec3_dot(to_hit, cylinder.axis_v);
+	normal = vec3_sub(to_hit,vec3_scale(cylinder.axis_v, projection));
+	
+	return (vec3_normalize(normal));
 	
 }
 
-bool get_closest_t(t_quadratic q, double *t)
+static bool get_closest_t(t_quadratic q, double *t)
 {
 	if (q.t1 > 0 && q.t2 > 0)
 	{
@@ -43,7 +44,7 @@ bool get_closest_t(t_quadratic q, double *t)
 	return (true);
 }
 
-bool calculate_hit (t_ray ray, t_cylinder cylinder, double *t)
+static bool calculate_hit (t_ray ray, t_cylinder cylinder, double *t)
 {
 	t_vec3 hit_point;
 	t_vec3 hit_to_center;
@@ -55,7 +56,7 @@ bool calculate_hit (t_ray ray, t_cylinder cylinder, double *t)
 	
 	if( height > cylinder.height / 2 )
 		return (false);
-	else if( height < cylinder.height / 2)
+	else if( height < -cylinder.height / 2)
 		return (false);
 	return (true);
 }
@@ -69,7 +70,9 @@ bool is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t)
 	q.oc = vec3_sub(ray.origin, cylinder.center);// vector desde el punto de la cylinder al origen del rayo 
 	dot_dir_axis = vec3_dot(ray.direction, cylinder.axis_v);//(direccion · eje)
 	q.a = vec3_dot( ray.direction, ray.direction) - (dot_dir_axis * dot_dir_axis);
-	if (fabs(q.a) < 0.000001) return (false); dot_oc_axis = vec3_dot(q.oc, cylinder.axis_v);//(oc · eje)
+	if (fabs(q.a) < 0.000001) 
+		return (false); 
+	dot_oc_axis = vec3_dot(q.oc, cylinder.axis_v);//(oc · eje)
 	q.b = 2.0 * ((vec3_dot(q.oc, ray.direction)) - (dot_oc_axis * dot_dir_axis));
 	q.radius = cylinder.diameter / 2;
 	q.c = vec3_dot(q.oc, q.oc) - (dot_oc_axis * dot_oc_axis) - (q.radius * q.radius);
@@ -83,3 +86,10 @@ bool is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t)
 
 	return (true); 
 }
+
+/*
+a = (dirección · dirección) - (dirección · eje)²
+b = 2 * ((oc · dirección) - (oc · eje) * (dirección · eje))
+c = (oc · oc) - (oc · eje)² - radio²
+
+*/

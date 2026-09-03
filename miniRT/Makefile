@@ -67,6 +67,12 @@ SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
 					sphere.c					\
 					s_render.c					\
 					)
+BASE_DIR_CYLINDER = $(SRC_DIR)/cylinder
+SRCS		+= $(addprefix $(BASE_DIR_CYLINDER)/,				\
+					cylinder.c					\
+					c_render.c					\
+					)
+
 BASE_DIR_UTILS = $(SRC_DIR)/utils
 SRCS		+= $(addprefix $(BASE_DIR_UTILS)/,				\
 					rgb_to_hex.c				\

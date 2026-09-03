@@ -137,6 +137,7 @@ int main(int ac, char **av)
 	{
 		render_sphere(&scene, img);
 		render_plane (&scene, img);
+		render_cylinder(&scene, img);
 	}
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_key_hook(mlx, &escape_cfg, mlx);

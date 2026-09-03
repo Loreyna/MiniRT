@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/03 18:23:38 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/09/03 19:16:05 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,10 @@ bool		find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *ind
 t_vec3		sphere_normal(t_sphere sphere, t_vec3 point);
 //uint32_t 	calculate_lighting(t_scene *scene, t_hit hit);
 
+//Cylinder
+bool	is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t);
+t_vec3	cylinder_normal(t_vec3 hit_point, t_cylinder cylinder);
+void	render_cylinder (t_scene *scene, mlx_image_t *img);
 
 
 #endif
