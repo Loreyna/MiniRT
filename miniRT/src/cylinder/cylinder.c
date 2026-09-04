@@ -18,6 +18,7 @@ t_vec3 cylinder_normal(t_vec3 hit_point, t_cylinder cylinder)
 	t_vec3 to_hit;
 	double projection;
 
+	cylinder.axis_v = vec3_normalize(cylinder.axis_v);
 	to_hit = vec3_sub(hit_point, cylinder.center);
 	projection =  vec3_dot(to_hit, cylinder.axis_v);
 	normal = vec3_sub(to_hit,vec3_scale(cylinder.axis_v, projection));
@@ -80,6 +81,7 @@ bool is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t)
 	double dot_dir_axis;
 	double dot_oc_axis;
 	
+	cylinder.axis_v = vec3_normalize(cylinder.axis_v);
 	q.oc = vec3_sub(ray.origin, cylinder.center);// vector desde el punto de la cylinder al origen del rayo 
 	dot_dir_axis = vec3_dot(ray.direction, cylinder.axis_v);//(direccion · eje)
 	q.a = vec3_dot( ray.direction, ray.direction) - (dot_dir_axis * dot_dir_axis);
