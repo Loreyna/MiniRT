@@ -58,10 +58,6 @@ SRCS		+= $(addprefix $(BASE_DIR_RAY)/,				\
 					camera_ray.c				\
 					ray.c						\
 					)
-BASE_DIR_RENDER = $(SRC_DIR)/render
-SRCS		+= $(addprefix $(BASE_DIR_RENDER)/,				\
-					render.c				\
-					)
 BASE_DIR_SPHERE = $(SRC_DIR)/sphere
 SRCS		+= $(addprefix $(BASE_DIR_SPHERE)/,				\
 					sphere.c					\

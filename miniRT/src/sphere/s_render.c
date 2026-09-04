@@ -6,68 +6,55 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 18:39:01 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/03 17:28:24 by viaremko         ###   ########.fr       */
+/*   Updated: 2026/09/04 17:34:58 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minirt.h"
 
-static uint32_t calculate_lighting(t_scene *scene, t_hit hit)//reducir o dividir
+static int	calculate_channel(int object_color, t_light_calc light)
 {
-	double  diffuse;
-	double  ambient;
-	int     r;
-	int     g;
-	int     b;
-	uint8_t f_rgb[3];
+	int		value;
+	double	ambient_aux;
+	double	diffuse_aux;
+
+	ambient_aux = light.ambient * (light.ambient_rgb / 255.0);
+	diffuse_aux = light.diffuse * (light.light_rgb / 255.0);
+	value = object_color * (ambient_aux + diffuse_aux);
+	if (value > 255)
+		return (255);
+	return (value);
+}
+
+static uint32_t	calculate_lighting(t_scene *scene, t_hit hit)
+{
+	double			diffuse;
+	double			ambient;
+	uint8_t			rgb[3];
+	t_light_calc	light;
 
 	diffuse = 0.0;
 	ambient = 0.0;
-	// Only calculate light values if they were provided in the .rt file
 	if (scene->has_light && scene->light)
 		diffuse = calculate_diffuse(hit.point, hit.normal, scene->light);
 	if (scene->has_ambient && scene->ambient)
 		ambient = scene->ambient->light_ratio;
-
-	 
-	double ambient_aux = 0.0; 
-	double diffuse_aux = 0.0;
-
-	if (scene->has_ambient && scene->ambient)
-		ambient_aux = ambient * (scene->ambient->rgb[0] / 255.0);
-	if (scene->has_light && scene->light)
-		diffuse_aux = diffuse * (scene->light->rgb[0] / 255.0);
-	r = hit.sphere->rgb[0] * (diffuse_aux + ambient_aux);
-
-	if (scene->has_ambient && scene->ambient)
-		ambient_aux = ambient * (scene->ambient->rgb[1] / 255.0);
-	if (scene->has_light && scene->light)
-		diffuse_aux = diffuse * (scene->light->rgb[1] / 255.0);
-	g = hit.sphere->rgb[1] * (diffuse_aux + ambient_aux);
-
-	if (scene->has_ambient && scene->ambient)
-		ambient_aux = ambient * (scene->ambient->rgb[2] / 255.0);
-	if (scene->has_light && scene->light)
-		diffuse_aux = diffuse * (scene->light->rgb[2] / 255.0);
-	b = hit.sphere->rgb[2] * (diffuse_aux + ambient_aux);
-
-	if(r > 255)
-		f_rgb[0] = 255;
-	else 
-		f_rgb[0] = r;
-	if(g > 255)
-		f_rgb[1] = 255;
-	else 
-		f_rgb[1] = g;
-	if(b > 255)
-		f_rgb[2] = 255;
-	else 
-		f_rgb[2] = b;
-
-	return (rgb_to_hex(f_rgb));
+	light.ambient = ambient;
+	light.diffuse = diffuse;
+	light.ambient_rgb = scene->ambient->rgb[0];
+	light.light_rgb = scene->light->rgb[0];
+	rgb[0] = calculate_channel(hit.sphere->rgb[0], light);
+	light.ambient_rgb = scene->ambient->rgb[1];
+	light.light_rgb = scene->light->rgb[1];
+	rgb[1] = calculate_channel(hit.sphere->rgb[1], light);
+	light.ambient_rgb = scene->ambient->rgb[2];
+	light.light_rgb = scene->light->rgb[2];
+	rgb[2] = calculate_channel(hit.sphere->rgb[2], light);
+	return (rgb_to_hex(rgb));
 }
 
-bool	find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index)
+bool	find_closest_sphere(t_scene *scene, t_ray ray,
+		double *closest_t, int *index)
 {
 	int		i;
 	double	t;
@@ -75,7 +62,6 @@ bool	find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *inde
 	i = 0;
 	*closest_t = INFINITY;
 	*index = -1;
-
 	while (i < scene->s_count)
 	{
 		if (is_sphere_hit(ray, scene->spheres[i], &t))
@@ -112,26 +98,27 @@ static t_hit	trace_ray(t_scene *scene, t_ray ray)
 	return (hit);
 }
 
-void render_sphere (t_scene *scene, mlx_image_t *img)
+void	render_sphere(t_scene *scene, mlx_image_t *img)
 {
-	int		x; 
-	int		y;
-	t_ray	ray;
-	t_hit	hit;
+	int			x;
+	int			y;
+	t_ray		ray;
+	t_hit		hit;
+	uint32_t	final_color;
 
 	y = 0;
-		while (y < HEIGHT)
+	while (y < HEIGHT)
 	{
-			x = 0;
+		x = 0;
 		while (x < WIDTH)
 		{
-				ray =  create_camera_ray(scene->cam, x , y);
-				hit = trace_ray(scene, ray);
-				if (hit.hit)
-				{
-					uint32_t final_color = calculate_lighting(scene, hit);
-					mlx_put_pixel(img, x, y, final_color);
-				}
+			ray = create_camera_ray(scene->cam, x, y);
+			hit = trace_ray(scene, ray);
+			if (hit.hit)
+			{
+				final_color = calculate_lighting(scene, hit);
+				mlx_put_pixel(img, x, y, final_color);
+			}
 			x++;
 		}
 		y++;

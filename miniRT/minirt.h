@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:46:31 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/03 19:16:05 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/04 17:40:23 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,31 @@ typedef struct s_camera
 	uint8_t		fov;
 }				t_camera;
 
+typedef struct s_camera_ray
+{
+	double	aspect_ratio;
+	double	fov_scale;
+	double	pixel_x;
+	double	pixel_y;
+	t_vec3	right;
+	t_vec3	up;
+	t_vec3	direction;
+}	t_camera_ray;
+
 typedef struct s_light
 {
 	t_vec3		cordinates;
 	double		brightness;
 	uint8_t		rgb[3];
 }				t_light;
+
+typedef struct s_light_calc
+{
+	double	ambient;
+	double	diffuse;
+	int		ambient_rgb;
+	int		light_rgb;
+}	t_light_calc;
 
 typedef struct s_sphere
 {
