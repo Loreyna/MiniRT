@@ -27,41 +27,6 @@ t_vec3 cylinder_normal(t_vec3 hit_point, t_cylinder cylinder)
 	
 }
 
-/*static bool get_closest_t(t_quadratic q, double *t)
-{
-	if (q.t1 > 0 && q.t2 > 0)
-	{
-    	if (q.t1 < q.t2)
-        	*t = q.t1;
-    	else
-        	*t = q.t2;
-	}	
-	else if (q.t1 > 0)
-    	*t = q.t1;
-	else if (q.t2 > 0)
-    	*t = q.t2;
-	else
-    	return (false);
-	return (true);
-}
-
-static bool calculate_hit (t_ray ray, t_cylinder cylinder, double *t)
-{
-	t_vec3 hit_point;
-	t_vec3 hit_to_center;
-	double height;
-	
-	hit_point = ray_at(ray, *t);
-	hit_to_center = vec3_sub(hit_point, cylinder.center);
-	height = vec3_dot(hit_to_center, cylinder.axis_v);
-	
-	if( height > cylinder.height / 2 )
-		return (false);
-	else if( height < -cylinder.height / 2)
-		return (false);
-	return (true);
-}*/
-
 static bool validate_hit_height(t_ray ray, t_cylinder cylinder, double t, double *out_t)
 {
     t_vec3 hit_point = ray_at(ray, t);
@@ -75,6 +40,7 @@ static bool validate_hit_height(t_ray ray, t_cylinder cylinder, double t, double
     }
     return (false);
 }
+
 bool is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t)
 { 
 	t_quadratic q;
@@ -94,12 +60,6 @@ bool is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t)
 	q.discriminant = q.b * q.b - 4.0 * q.a * q.c;//resultado de lo que hay dentro de la raiz cuadrada
 	if (q.discriminant < 0)// no choca 
 		return (false); 
-/*	if(!get_closest_t(q, t))
-		return (false);
-	if (!calculate_hit(ray, cylinder, t))
-	return (false);
-
-	return (true);*/
 	double sqrt_d = sqrt(q.discriminant);
         double t1 = (-q.b - sqrt_d) / (2.0 * q.a);
         double t2 = (-q.b + sqrt_d) / (2.0 * q.a);

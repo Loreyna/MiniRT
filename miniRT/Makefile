@@ -36,6 +36,10 @@ BASE_DIR_MEMORY = $(SRC_DIR)/memory
 SRCS		+= $(addprefix $(BASE_DIR_MEMORY)/,				\
 					allocate_scene.c			\
 					)
+BASE_DIR_RENDER = $(SRC_DIR)/render
+SRCS		+= $(addprefix $(BASE_DIR_RENDER)/,				\
+		   			render.c				\
+					)
 BASE_DIR_PARSER = $(SRC_DIR)/parser
 SRCS		+= $(addprefix $(BASE_DIR_PARSER)/,				\
 					count.c					\

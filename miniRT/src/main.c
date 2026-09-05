@@ -134,11 +134,7 @@ int main(int ac, char **av)
 		error_exit("Error\n", "Bad mlx initialization", 99);
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if(scene.has_camera)
-	{
-		render_plane (&scene, img);
-		render_sphere(&scene, img);
-		render_cylinder(&scene, img);
-	}
+		render_scene(&scene, img);
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_key_hook(mlx, &escape_cfg, mlx);
 	mlx_loop(mlx);

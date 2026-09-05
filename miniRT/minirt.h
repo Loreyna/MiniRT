@@ -196,21 +196,27 @@ t_ray	create_camera_ray(t_camera *cam, int x, int y);
 t_vec3 calculate_direction(t_camera *cam, int x, int y);
 void get_camera_basis(t_vec3 forward, t_vec3 *right, t_vec3 *up);
 
-//plane
+//Plane
+bool	find_closest_plane(t_scene *scene, t_ray ray, double *closest_t, int *index);
 void render_plane (t_scene *scene, mlx_image_t *img);
 bool is_plane_hit(t_ray ray, t_plane plane, double *t);
 
 
-//Esphere
-bool		is_sphere_hit(t_ray ray, t_sphere sphere, double *t);
+//Sphere
 bool		find_closest_sphere(t_scene *scene, t_ray ray, double *closest_t, int *index);
+bool		is_sphere_hit(t_ray ray, t_sphere sphere, double *t);
 t_vec3		sphere_normal(t_sphere sphere, t_vec3 point);
 //uint32_t 	calculate_lighting(t_scene *scene, t_hit hit);
 
 //Cylinder
+bool     find_closest_cylinder(t_scene *scene, t_ray ray, double *closest_t, int *index);
 bool	is_cylinder_hit(t_ray ray, t_cylinder cylinder, double *t);
 t_vec3	cylinder_normal(t_vec3 hit_point, t_cylinder cylinder);
 void	render_cylinder (t_scene *scene, mlx_image_t *img);
+
+//Render
+t_hit trace_ray(t_scene *scene, t_ray ray);
+void render_scene(t_scene *scene, mlx_image_t *img);
 
 
 #endif
