@@ -15,15 +15,16 @@ static	bool in_shadow(t_vec3 hit_point, t_vec3 light_dir, t_vec3 normal, t_scene
 {
 	t_ray	ray;
 	t_vec3	shadow_origin;
-	//t_vec3	distance;
+	t_vec3	light_vector;
+	double	distance;
 	t_hit	hit;
 	
-	//distance = vec3_sub(scene->light->cordinates, hit_point);
-	//distance = vec3_lenth(distance);
+	light_vector = vec3_sub(scene->light->cordinates, hit_point);
+	distance = vec3_length(light_vector);
 	shadow_origin = vec3_add(hit_point, vec3_scale(normal, 0.0001));
 	ray = ray_create(shadow_origin, light_dir);
 	hit = trace_ray(scene, ray);
-	if(hit.hit)
+	if(hit.hit && hit.t < distance)
 		return (true);
 	else
 		return (false);
