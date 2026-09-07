@@ -6,9 +6,10 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 18:39:01 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/04 17:34:58 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/07 19:15:22 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../minirt.h"
 
 static int	calculate_color_channel(int object_rgb, t_light_calc light)
@@ -52,8 +53,10 @@ static uint32_t calculate_lighting(t_scene *scene, t_hit hit)
     i = 0;
     while (i < 3)
     {
-        light.ambient_rgb = scene->ambient->rgb[i];
-        light.light_rgb = scene->light->rgb[i];
+        if(scene->has_ambient)
+            light.ambient_rgb = scene->ambient->rgb[i];
+        if(scene->has_light)
+            light.light_rgb = scene->light->rgb[i];
         base_color = get_hit_color(hit, i);
         f_rgb[i] = calculate_color_channel(base_color, light);
         i++;
