@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_render.c                                         :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -46,7 +46,7 @@ static uint32_t calculate_lighting(t_scene *scene, t_hit hit)
     light.ambient = 0.0;
     light.diffuse = 0.0;
     if (scene->has_light && scene->light)
-        light.diffuse = calculate_diffuse(hit.point, hit.normal, scene->light);
+        light.diffuse = calculate_diffuse(hit.point, hit.normal, scene);
     if (scene->has_ambient && scene->ambient)
         light.ambient = scene->ambient->light_ratio;
     i = 0;

@@ -182,7 +182,7 @@ bool	parse_cylinder(t_scene *scene, char **data);
 void	render_sphere (t_scene *scene, mlx_image_t *img);
 
 //Lighting
-double calculate_diffuse(t_vec3 hit_point, t_vec3 normal, t_light *light);
+double calculate_diffuse(t_vec3 hit_point, t_vec3 normal, t_scene *scene);
 
 // Graphics
 mlx_t	*create_window(int height, int width);
