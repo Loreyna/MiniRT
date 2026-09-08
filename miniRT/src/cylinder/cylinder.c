@@ -6,7 +6,7 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 16:19:12 by username          #+#    #+#             */
-/*   Updated: 2026/09/08 19:42:41 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/08 20:15:03 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static bool	validate_hit_height(t_ray ray,
 	t_vec3	hit_to_center;
 	double	height;
 
-	height = vec3_dot(hit_to_center, cylinder.axis_v);
-	hit_to_center = vec3_sub(hit_point, cylinder.center);
 	hit_point = ray_at(ray, t);
+	hit_to_center = vec3_sub(hit_point, cylinder.center);
+	height = vec3_dot(hit_to_center, cylinder.axis_v);
 	if (height >= -cylinder.height / 2 && height <= cylinder.height / 2)
 	{
 		*out_t = t;
