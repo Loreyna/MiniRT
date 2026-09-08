@@ -6,12 +6,11 @@
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:12:34 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/04 17:59:17 by lrey-mol         ###   ########.fr       */
+/*   Updated: 2026/09/08 18:13:26 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minirt.h"
-#include <math.h>
 
 t_ray	create_camera_ray(t_camera *cam, int x, int y)
 {

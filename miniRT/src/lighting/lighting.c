@@ -5,26 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/29 17:09:57 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/04 17:54:00 by lrey-mol         ###   ########.fr       */
+/*   Created: 2026/08/29 17:09:57 by username          #+#    #+#             */
+/*   Updated: 2026/09/08 18:12:41 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minirt.h"
-static	bool in_shadow(t_vec3 hit_point, t_vec3 light_dir, t_vec3 normal, t_scene *scene)
+
+static bool	in_shadow(t_vec3 hit_point, t_vec3 light_dir,
+	t_vec3 normal, t_scene *scene)
 {
 	t_ray	ray;
 	t_vec3	shadow_origin;
 	t_vec3	light_vector;
 	double	distance;
 	t_hit	hit;
-	
+
 	light_vector = vec3_sub(scene->light->cordinates, hit_point);
 	distance = vec3_length(light_vector);
 	shadow_origin = vec3_add(hit_point, vec3_scale(normal, 0.0001));
 	ray = ray_create(shadow_origin, light_dir);
 	hit = trace_ray(scene, ray);
-	if(hit.hit && hit.t < distance)
+	if (hit.hit && hit.t < distance)
 		return (true);
 	else
 		return (false);
@@ -34,8 +36,8 @@ double	calculate_diffuse(t_vec3 hit_point, t_vec3 normal, t_scene *scene)
 {
 	t_vec3	light_dir;
 	double	dot_product;
-	t_light *light;
-	
+	t_light	*light;
+
 	light = scene->light;
 	if (!light)
 		return (0.0);
@@ -46,4 +48,4 @@ double	calculate_diffuse(t_vec3 hit_point, t_vec3 normal, t_scene *scene)
 	if (in_shadow(hit_point, light_dir, normal, scene))
 		return (0.0);
 	return (dot_product * light->brightness);
-}	
+}

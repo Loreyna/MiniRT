@@ -5,15 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/03 18:59:23 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/04 17:57:30 by lrey-mol         ###   ########.fr       */
+/*   Created: 2026/09/03 18:59:23 by username          #+#    #+#             */
+/*   Updated: 2026/09/08 19:43:08 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minirt.h"
 
+t_vec3	cylinder_normal(t_vec3 hit_point, t_cylinder cylinder)
+{
+	t_vec3	normal;
+	t_vec3	to_hit;
+	double	projection;
+
+	cylinder.axis_v = vec3_normalize(cylinder.axis_v);
+	to_hit = vec3_sub(hit_point, cylinder.center);
+	projection = vec3_dot(to_hit, cylinder.axis_v);
+	normal = vec3_sub(to_hit, vec3_scale(cylinder.axis_v, projection));
+	return (vec3_normalize(normal));
+}
+
 bool	find_closest_cylinder(t_scene *scene, t_ray ray,
-		double *closest_t, int *index)
+	double *closest_t, int *index)
 {
 	int		i;
 	double	t;

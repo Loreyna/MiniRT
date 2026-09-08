@@ -39,6 +39,7 @@ SRCS		+= $(addprefix $(BASE_DIR_MEMORY)/,				\
 BASE_DIR_RENDER = $(SRC_DIR)/render
 SRCS		+= $(addprefix $(BASE_DIR_RENDER)/,				\
 		   			render.c				\
+					render_ob.c				\
 					)
 BASE_DIR_PARSER = $(SRC_DIR)/parser
 SRCS		+= $(addprefix $(BASE_DIR_PARSER)/,				\

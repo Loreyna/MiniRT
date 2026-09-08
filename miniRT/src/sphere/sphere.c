@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/04 17:31:32 by lrey-mol          #+#    #+#             */
-/*   Updated: 2026/09/04 17:33:47 by lrey-mol         ###   ########.fr       */
+/*   Created: 2026/09/04 17:31:32 by username          #+#    #+#             */
+/*   Updated: 2026/09/08 19:43:37 by lrey-mol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,3 @@ bool	is_sphere_hit(t_ray ray, t_sphere sphere, double *t)
 		return (false);
 	return (true);
 }
-/*
-a*t² + b*t + c = 0
-
-a = dirección · dirección
-b = 2 * (oc · dirección)
-c = oc · oc - radio²
-*/

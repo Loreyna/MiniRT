@@ -1,5 +1,17 @@
-#include "../minirt.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 19:45:38 by lrey-mol          #+#    #+#             */
+/*   Updated: 2026/09/08 19:45:42 by lrey-mol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../minirt.h"
+/*
 static void	print_scene(t_scene *scene)
 {
 	printf("Scene:\n");
@@ -115,12 +127,11 @@ static void	print_scene(t_scene *scene)
 			i++;
 		}
 	}
-}
-
-int main(int ac, char **av)
+}*/
+int	main(int ac, char **av)
 {
-	t_scene	scene;
-	mlx_t	*mlx;
+	t_scene		scene;
+	mlx_t		*mlx;
 	mlx_image_t	*img;
 
 	check_args(ac, av);
@@ -128,12 +139,12 @@ int main(int ac, char **av)
 	count_objects(&scene, av[1]);
 	allocate_scene(&scene);
 	parse_objects(&scene, av[1]);
-	print_scene(&scene);
+	//print_scene(&scene);
 	mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
-	if(!mlx)
+	if (!mlx)
 		error_exit("Error\n", "Bad mlx initialization", 99);
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	if(scene.has_camera)
+	if (scene.has_camera)
 		render_scene(&scene, img);
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_key_hook(mlx, &escape_cfg, mlx);
