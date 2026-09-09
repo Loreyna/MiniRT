@@ -1,41 +1,57 @@
-# miniRT
+# miniRT 🕶️ 🔆
 
-![Status](https://img.shields.io/badge/Status-Work_in_Progress-orange?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Finished-success?style=flat-square)
+![Language](https://img.shields.io/badge/Language-C-blue?style=flat-square)
 
 **Authors:** Lorena and Lody (Volodymyr) Iaremko
 
+<p align="center">
+  <img src="img/scene5.png" alt="Directional Lighting & Falloff - Best Shot" width="100%">
+  <br>
+  <em>Showcasing crisp shadows, deep directional lighting, and multi-object intersection</em>
+</p>
+
 ## About the Project
-miniRT is our first RayTracer written in C, built using the MLX42 library. The goal of this project is to generate computer-generated images using the Raytracing protocol. By implementing core mathematical and physical formulas, this program renders a scene as seen from a specific angle and position, complete with simple geometric objects and a lighting system.
+miniRT is our custom RayTracer written entirely in C, built using the MLX42 library. The goal of this project was to generate stunning computer-generated images by implementing the core mathematics and physics of the raytracing protocol from scratch. By calculating precise light paths, this program renders a 3D scene complete with geometric objects, deep shadows, and an accurate lighting system.
 
-The program is designed from the ground up to be completely leakless. All heap-allocated memory must be properly freed when necessary. Memory leaks will not be tolerated. The codebase is also written in accordance with the Norm.
+Robustness and optimization were key priorities. The program is designed from the ground up to be completely leakless—all heap-allocated memory is properly managed and freed. The entire codebase strictly adheres to the 42 Norm.
 
-## Current Progress
-**Status:** Work in Progress (WIP)
+## 📸 Render Gallery
 
-*   ✅ **Done:** Parsing stage. The program can successfully read and parse `.rt` scene description files.
-*   🔄 **In Progress:** Implementing ray tracing from the camera, as well as calculating ray and sphere intersections.
-*   ⏳ **To Do:** Planes, cylinders, translations, rotations, and lighting (ambient and diffuse, hard shadows).
+Here is a showcase of our raytracer conquering various geometric, lighting, and rendering stress tests. 
+
+| Scene 1: Primitive Basics | Scene 2: Complex Intersections | Scene 3: Advanced Shadows |
+| :---: | :---: | :---: |
+| <img src="img/scene0.png" width="250"> | <img src="img/scene1.png" width="250"> | <img src="img/scene2.png" width="250"> |
+
+| Scene 4: Extreme Camera Angles | Scene 5: High Object Density | Scene 6: Directional Lighting |
+| :---: | :---: | :---: |
+| <img src="img/scene3.png" width="250"> | <img src="img/scene4.png" width="250"> | <img src="img/scene5.png" width="250"> |
+
+| Scene 7: Corridor & Planes | Scene 10: Ultimate Stress Test |
+| :---: | :---: |
+| <img src="img/scene6.png" width="300"> | <img src="img/scene7.png" width="300"> |
 
 ---
 
-## Mandatory Features (Planned)
-The final rendering engine will support:
+## Implemented Features
+The custom rendering engine successfully supports:
 
-*   **Window Management:** Fluid window handling (switching, minimizing) with clean exits via the ESC key or the window's red cross.
-*   **Geometric Objects:** Intersections and insides handled correctly for Planes, Spheres, and Cylinders.
-*   **Transformations:** Translation and rotation applied to objects, lights, and cameras.
-*   **Lighting System:** Ambient lighting, diffuse lighting, spot brightness, and hard shadows.
+*   **Window Management:** Fluid window handling with MLX42, enabling clean rendering and smooth exits via the `ESC` key or window close button.
+*   **Geometric Objects:** Flawless mathematical intersection calculations for Spheres, Planes, and Cylinders, including inside-object perspective handling.
+*   **Transformations:** Accurate 3D translation and non-axis-aligned rotation applied dynamically to objects, point lights, and the camera setup.
+*   **Lighting & Shadows:** A robust lighting system calculating ambient occlusion, diffuse point lighting, spot brightness, and razor-sharp hard shadows.
 
 ## Scene Configuration (`.rt` files)
-The program takes a scene description file with the `.rt` extension as its first argument. If any misconfiguration is encountered in the file, the program will exit properly and print `Error\n` followed by an explicit error message.
+The program takes a scene description file with the `.rt` extension as its first argument. If any misconfiguration is encountered (syntax, out-of-bounds parameters), the program safely exits and prints `Error\n` followed by an explicit error message.
 
-The parser currently handles the following identifiers:
-*   `A`: Ambient lighting
-*   `C`: Camera
-*   `L`: Light
-*   `sp`: Sphere
-*   `pl`: Plane
-*   `cy`: Cylinder
+The custom parser processes the following identifiers:
+*   `A`: Ambient lighting ratio and RGB
+*   `C`: Camera coordinates, orientation vector, and FOV
+*   `L`: Point light coordinates, brightness ratio, and RGB
+*   `sp`: Sphere coordinates, diameter, and RGB
+*   `pl`: Plane coordinates, normal vector, and RGB
+*   `cy`: Cylinder coordinates, orientation vector, diameter, height, and RGB
 
 ---
 
@@ -43,8 +59,8 @@ The parser currently handles the following identifiers:
 A `Makefile` is provided to compile the source files using `cc` with the flags `-Wall`, `-Wextra`, and `-Werror`.
 
 ```bash
-# Compile the project
+# Compile the project and MLX42 dependencies
 make
 
 # Run the RayTracer with a scene file
-./miniRT path/to/scene.rt
+./miniRT scenes/scene_0.rt

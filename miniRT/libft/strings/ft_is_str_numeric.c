@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft.h"
+
 bool	ft_is_str_numeric(char *s)
 {
 	int	i;
@@ -48,13 +49,13 @@ bool	ft_is_str_double(char *s)
 	{
 		if (!ft_isdouble(s[i]))
 			return (false);
-		if(s[i] == '.')
+		if (s[i] == '.')
 			dot_count++;
-		if(s[i] == '.' && (s[i + 1] == '\0'))
+		if (s[i] == '.' && (s[i + 1] == '\0'))
 			return (false);
 		i++;
 	}
-	if(dot_count != 0 && dot_count != 1)
-		return(false);
+	if (dot_count != 0 && dot_count != 1)
+		return (false);
 	return (true);
 }
