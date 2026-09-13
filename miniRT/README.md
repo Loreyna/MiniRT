@@ -40,12 +40,11 @@ The program takes a scene description file (`.rt`) as its first argument.
 ## Resources
 
 Here are the key references and documentation used to build this project:
-*   [Ray Tracing in One Weekend](https://raytracing.github.io/) - The foundational guide for understanding ray and sphere intersection mathematics.
+*   [Essence of linear algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) - The foundational course for understanding ray and sphere intersection mathematics.
 *   [MLX42 Documentation](https://github.com/codam-coding-college/MLX42) - Used for window management, pixel drawing, and event hooks.
 
-**AI Usage:**
-*Please update this section to reflect your actual AI usage. For example:* 
-AI (like ChatGPT/Claude) was used for generating boilerplate code for the README, explaining complex mathematical concepts (like quadratic equations for cylinder intersections), and helping debug specific memory leaks during the parsing phase.
+**AI Usage:** 
+AI (ChatGPT/Gemini) was used for generating boilerplate code for the README, explaining complex mathematical concepts (like quadratic equations for cylinder intersections), and helping debug specific memory leaks during the parsing phase.
 
 ---
 
