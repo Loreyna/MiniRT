@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   norm.c                                             :+:      :+:    :+:   */
+/*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrey-mol <lrey-mol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -41,9 +41,9 @@ static bool	parse_orient(t_scene *scene, char **data)
 		ft_free_matrix((void ***)&norm);
 		return (false);
 	}
-	if (((ft_atof(norm[0]) < -1) && (ft_atof(norm[0]) > 1))
-		|| ((ft_atof(norm[1]) < -1) && (ft_atof(norm[1]) > 1))
-		|| ((ft_atof(norm[2]) < -1) && (ft_atof(norm[2]) > 1)))
+	if (((ft_atof(norm[0]) < -1) || (ft_atof(norm[0]) > 1))
+		|| ((ft_atof(norm[1]) < -1) || (ft_atof(norm[1]) > 1))
+		|| ((ft_atof(norm[2]) < -1) || (ft_atof(norm[2]) > 1)))
 	{
 		ft_free_matrix((void ***)&norm);
 		return (false);
