@@ -35,6 +35,8 @@ static bool	parse_light_ratio(t_scene *scene, char **data)
 	if (!ft_is_str_double(data[2]))
 		return (false);
 	scene->light->brightness = ft_atof(data[2]);
+	if (scene->light->brightness < 0.0 || scene->light->brightness > 1.0)
+		return (false);
 	return (true);
 }
 
