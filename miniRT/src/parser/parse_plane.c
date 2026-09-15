@@ -12,49 +12,20 @@
 
 #include "../../minirt.h"
 
-static bool ft_is_null(char *str)
-{
-        if (!str)
-                return (false);
-        return (ft_strcmp(str, "null") == 0);
-}
-
 static bool	parse_point(t_scene *scene, char **data)
 {
 	char	**cord;
 
 	cord = ft_split(data[1], ',');
-	if (!cord || !cord[0] || !cord[1] || !cord[2])
-        {
-                if (cord)
-                        ft_free_matrix((void ***)&cord);
-                return (false);
-        }
-
-        if ((!ft_is_str_double(cord[0]) && !ft_is_null(cord[0])) ||
-            (!ft_is_str_double(cord[1]) && !ft_is_null(cord[1])) ||
-            (!ft_is_str_double(cord[2]) && !ft_is_null(cord[2])))
-        {
-                ft_free_matrix((void ***)&cord);
-                printf("Returning false\n");
-                return (false);
-        }
-	
-	if(ft_is_null(cord[0]))
-		scene->planes[scene->p_index].point.x = 0; 
-	else
-		scene->planes[scene->p_index].point.x = ft_atof(cord[0]);
-
-	if(ft_is_null(cord[1]))
-		scene->planes[scene->p_index].point.y = 0; 
-	else
-		scene->planes[scene->p_index].point.y = ft_atof(cord[1]);
-
-	if(ft_is_null(cord[2]))
-		scene->planes[scene->p_index].point.z = 0; 
-	else
-		scene->planes[scene->p_index].point.z = ft_atof(cord[2]);
-
+	if (!validate_coords(cord))
+	{
+		if (cord)
+			ft_free_matrix((void ***)&cord);
+		return (false);
+	}
+	scene->planes[scene->p_index].point.x = get_coord_val(cord[0]);
+	scene->planes[scene->p_index].point.y = get_coord_val(cord[1]);
+	scene->planes[scene->p_index].point.z = get_coord_val(cord[2]);
 	ft_free_matrix((void ***)&cord);
 	return (true);
 }

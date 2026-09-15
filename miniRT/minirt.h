@@ -190,8 +190,11 @@ double		calculate_diffuse(t_vec3 hit_point, t_vec3 normal, t_scene *scene);
 mlx_t		*create_window(int height, int width);
 
 //Utils
+bool		validate_coords(char **cord);
 uint32_t	rgb_to_hex(uint8_t rgb[3]);
 void		escape_cfg(mlx_key_data_t keydata, void *param);
+double		get_coord_val(char *str);
+bool		ft_is_null(char *str);
 
 //Ray
 t_ray		create_camera_ray(t_camera *cam, int x, int y);
