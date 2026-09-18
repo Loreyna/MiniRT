@@ -2,7 +2,7 @@ NAME			= miniRT
 
 CC				= gcc
 CFLAGS			= -Wextra -Wall -Werror -g -lm
-CFLAGS			+= -fsanitize=address -fno-omit-frame-pointer
+#CFLAGS			+= -fsanitize=address -fno-omit-frame-pointer
 RM				= rm -rf
 
 LIBFT_DIR		= ./libft

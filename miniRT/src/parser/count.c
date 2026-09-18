@@ -86,6 +86,5 @@ void	count_objects(t_scene *scene, char *filename)
 		ft_free_matrix((void ***)&data);
 		line = get_next_line(fd);
 	}
-	printf("Objects counted successfully");
 	close(fd);
 }
